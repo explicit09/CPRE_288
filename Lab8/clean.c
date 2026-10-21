@@ -27,7 +27,6 @@ void outlier_removal(float distance[])
                 distance[0] = distance[1];
             }
     
-    
     for (l = 1; l < 90; l++) 
     {
         x = distance[l]; //we chenaged from sensor_data_array to dist !      
