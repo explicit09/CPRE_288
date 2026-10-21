@@ -1,0 +1,68 @@
+///**
+// * main.c
+// */
+#include "cyBot_Scan.h"
+#include "Timer.h"
+#include "cyBot_uart.h"
+#include "stdio.h"
+#include "open_interface.h"
+
+//BOT 9 - PLEASE B WITH US
+
+// 101500 -- right calibration
+// 1366750 -- left calibration
+// our main function
+int main(void)
+{
+
+    // initialization
+    timer_init();
+    lcd_init();
+    // initialization scan_t which tells us the distance of angle
+    cyBot_uart_init(); //initialize Uart so we can use Putty
+    cyBOT_init_Scan(0b0111); // previously -- 0b0111 // initialized  Bit 0: 1 enable servo Bit 1: 1 enable PING Bit 2: 1 enable IR
+//    cyBOT_SERVO_cal();
+
+
+    right_calibration_value = 101500;
+    left_calibration_value = 1366750;
+    //variables
+    double angle;
+    char message[100][100] = {"0"};
+    int i, j, k;
+    cyBOT_Scan_t scan_t;
+
+
+    //scan data and store it
+    for (i = 0; i <= 180; i += 2)
+    {
+        cyBOT_Scan(i, &scan_t);
+
+
+        sprintf(message[i/2], "%d\t\t %.1f\n", i, scan_t.sound_dist);
+    }
+
+    char title[] = "";
+    int letter;
+
+    //When letter m is clicked it will displace the data stored in "message" 1 byte at a time until it is complete
+    letter = cyBot_getByte();
+    if (letter == 'm')
+    {
+        // print "degrees" and "distance" to display on Putty by displaying 1 byte at a time till the word is complete
+        sprintf(title, "Degrees\t\t Distance(cm)\n");
+        for (k = 0; k < strlen(title); k++) //
+        {
+            cyBot_sendByte(title[k]);
+        }
+
+        //display the data collected from Putty
+        for (j = 0; j < strlen(message); j++)
+        {
+                cyBot_sendByte(message[j]);
+        }
+
+    }
+
+    return 0;
+}

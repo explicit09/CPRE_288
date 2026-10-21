@@ -1,0 +1,103 @@
+
+
+/**
+ * main.c
+ */
+
+#include "uart.h"
+#include "lcd.h"
+#include "Timer.h"
+#include "movement.h"
+#include "cyBot_Scan.h"
+#include "stdio.h"
+#include "math.h"
+#include "functions.h"
+#include "clean.h"
+
+
+
+int main(void)
+{
+
+    char display[21];
+    int count =0;
+    char text;
+
+
+
+    //if enter is pressed
+
+    timer_init();
+    lcd_init();
+    uart_init();
+    uart_interrupt();
+
+
+//   // else if 20 bits are characteersa
+//    while (1)
+//    {//bvv
+//        text =  uart_receive();
+//        uart_sendChar(text); //this is for part 2
+//
+//        if(text == '\r')// do you want to add a statenebt here that also check s if text == 20
+//        {
+//            //if display is only 5 charcters long
+//
+//            display[count]= '\0';
+//            lcd_clear();
+//            lcd_puts(display);
+//            count = 0;//print display
+//            //store in display
+//            uart_sendChar('\n');  //this is for part 2
+//
+//        }
+//
+//        else //we are not pressing enter yet, we are still typing
+//        {
+//            //storing in display
+//            display[count] = text;
+//            lcd_printf("%d %c", count, text);
+//            count ++;
+//
+//            if (count == 20)
+//
+//            {
+//                display[20]= '\0';
+//                lcd_clear();
+//                lcd_puts(display);
+//                count =0;
+//
+//            }
+//        }
+//    }
+//
+//
+
+        //part 3
+
+//        char text_received;
+//        while(1)
+//        {
+//            if(flag == 1){
+//                text_received = c;
+//                flag = 0;
+//
+//                if(text_received == '\r') uart_sendChar('\n');
+//
+//                lcd_clear();
+//                lcd_printf("%c",text_received);
+//
+//                uart_sendChar(text_received);
+//
+//            }
+//        }
+
+        //part 4
+
+
+
+    return 0;
+
+}
+
+
