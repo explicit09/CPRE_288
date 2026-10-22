@@ -1,5 +1,6 @@
 #include "scanner.h"
 #include "cyBot_Scan.h"
+#include "math.h"
 
 cyBOT_Scan_t scan;
 extern float dist[91];

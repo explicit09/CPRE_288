@@ -21,13 +21,9 @@ int main(void)
 
     cyBOT_Scan_t scan;
     int letter;
-    int meters;
     int clockwise = 0;
     int degrees_to_turn;
-    int avg = 0;
-    int sum = 0;
     int small = 0;
-    int scan2 = 0;
     char message[50]; 
     while (1)
     {
@@ -65,14 +61,22 @@ int main(void)
             print_objects(&impp);
 
             clockwise = (impp.angle[small] < 90); // if false, == 0, or not 0
-            degrees_to_turn = 73 - impp.angle[small];
+            degrees_to_turn = 85 - impp.angle[small];
             turn(sensor_data, fabs(degrees_to_turn), clockwise);
 
             // move ahead untill dist <=5cm
             drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
 
             scan_IR_PING();
-            print_scan("** Raw noisy sensor data **\n", estimate);
+            detect_object(estimate, &impp);
+            print_objects(&impp);
+            small = find_smallest(&impp);
+            point_to_smallest_obj(impp.angle[small]);
+            sprintf(message, "The smallest is %d\n", small);
+            print_to_putty(message);
+
+
+
 
         }
     }

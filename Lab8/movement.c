@@ -62,11 +62,11 @@ void turn(oi_t *sensor, int degrees, bool clockwise)
     double deg = 0;
     if (clockwise)
     {
-        oi_setWheels(-100, 100); // start turning
+        oi_setWheels(-80, 100); // start turning
     }
     else
     {
-        oi_setWheels(100, -100);
+        oi_setWheels(80, -100);
     }
 
     while (deg < degrees)
