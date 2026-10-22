@@ -6,18 +6,20 @@
 Building file: "../main.c"
 Invoking: Arm Compiler
 "C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="U:/CPRE288_F26/Lab8" --include_path="C:/ti/TivaWare_C_Series-2.2.0.295" --include_path="C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
-"../main.c", line 174: warning #112-D: statement is unreachable
-"../main.c", line 48: warning #179-D: variable "display" was declared but never referenced
-"../main.c", line 49: warning #179-D: variable "count" was declared but never referenced
-"../main.c", line 50: warning #179-D: variable "text" was declared but never referenced
-"../main.c", line 67: warning #179-D: variable "message" was declared but never referenced
-"../main.c", line 70: warning #179-D: variable "small_obj" was declared but never referenced
-"../main.c", line 76: warning #179-D: variable "scan2" was declared but never referenced
+"..\common.h", line 7: warning #1-D: last line of file ends without a newline
+"..\init.h", line 3: warning #1-D: last line of file ends without a newline
+"..\scanner.h", line 5: warning #1-D: last line of file ends without a newline
+"../main.c", line 80: warning #112-D: statement is unreachable
+"../main.c", line 24: warning #179-D: variable "meters" was declared but never referenced
+"../main.c", line 27: warning #179-D: variable "avg" was declared but never referenced
+"../main.c", line 28: warning #179-D: variable "sum" was declared but never referenced
+"../main.c", line 30: warning #179-D: variable "scan2" was declared but never referenced
+"../main.c", line 31: warning #179-D: variable "message" was declared but never referenced
 Finished building: "../main.c"
  
 Building target: "Lab8.out"
 Invoking: Arm Linker
-"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Lab8.map" --heap_size=1024 --stack_size=2048 -i"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Lab8_linkInfo.xml" --rom_model -o "Lab8.out" "./Timer.obj" "./clean.obj" "./functions.obj" "./lcd.obj" "./main.obj" "./movement.obj" "./open_interface.obj" "./tm4c123gh6pm_startup_ccs.obj" "./uart.obj" "../libcybotScan.lib" "../tm4c123gh6pm.cmd"  -llibc.a -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" 
+"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Lab8.map" --heap_size=1024 --stack_size=2048 -i"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Lab8_linkInfo.xml" --rom_model -o "Lab8.out" "./Timer.obj" "./clean.obj" "./functions.obj" "./init.obj" "./lcd.obj" "./main.obj" "./movement.obj" "./open_interface.obj" "./scanner.obj" "./tm4c123gh6pm_startup_ccs.obj" "./uart.obj" "../libcybotScan.lib" "../tm4c123gh6pm.cmd"  -llibc.a -l"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib" 
 <Linking>
 Finished building target: "Lab8.out"
  

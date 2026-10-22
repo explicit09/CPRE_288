@@ -65,11 +65,15 @@ int main(void)
             print_objects(&impp);
 
             clockwise = (impp.angle[small] < 90); // if false, == 0, or not 0
-            degrees_to_turn = 90 - impp.angle[small];
+            degrees_to_turn = 73 - impp.angle[small];
             turn(sensor_data, fabs(degrees_to_turn), clockwise);
 
             // move ahead untill dist <=5cm
-            drive_mm(sensor_data, (impp.dect[small] - 6) * 10);
+            drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
+
+            scan_IR_PING();
+            print_scan("** Raw noisy sensor data **\n", estimate);
+
         }
     }
 

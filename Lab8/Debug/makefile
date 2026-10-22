@@ -13,10 +13,12 @@ ORDERED_OBJS += \
 "./Timer.obj" \
 "./clean.obj" \
 "./functions.obj" \
+"./init.obj" \
 "./lcd.obj" \
 "./main.obj" \
 "./movement.obj" \
 "./open_interface.obj" \
+"./scanner.obj" \
 "./tm4c123gh6pm_startup_ccs.obj" \
 "./uart.obj" \
 "../libcybotScan.lib" \
@@ -151,8 +153,8 @@ Lab8.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "Timer.obj" "clean.obj" "functions.obj" "lcd.obj" "main.obj" "movement.obj" "open_interface.obj" "tm4c123gh6pm_startup_ccs.obj" "uart.obj" 
-	-$(RM) "Timer.d" "clean.d" "functions.d" "lcd.d" "main.d" "movement.d" "open_interface.d" "tm4c123gh6pm_startup_ccs.d" "uart.d" 
+	-$(RM) "Timer.obj" "clean.obj" "functions.obj" "init.obj" "lcd.obj" "main.obj" "movement.obj" "open_interface.obj" "scanner.obj" "tm4c123gh6pm_startup_ccs.obj" "uart.obj" 
+	-$(RM) "Timer.d" "clean.d" "functions.d" "init.d" "lcd.d" "main.d" "movement.d" "open_interface.d" "scanner.d" "tm4c123gh6pm_startup_ccs.d" "uart.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

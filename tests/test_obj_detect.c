@@ -1,7 +1,7 @@
 #include "stdio.h"
 #include "../Lab8/functions.h"
 #include "../Lab8/clean.h"
-#include "sensor-data-3.h"
+#include "data-w-cybot1.h"
 
 dataa obj_data;
 cyBOT_Scan_t scan;

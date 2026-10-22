@@ -1,6 +1,7 @@
 # FIXED
 
 main.obj: ../main.c
+main.obj: ../common.h
 main.obj: ../uart.h
 main.obj: ../Timer.h
 main.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/tm4c123gh6pm.h
@@ -21,18 +22,22 @@ main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdio.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdarg.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/string.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/xlocale/_string.h
-main.obj: ../movement.h
+main.obj: ../cyBot_Scan.h
 main.obj: ../open_interface.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/math.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_defs.h
 main.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
-main.obj: ../cyBot_Scan.h
+main.obj: ../movement.h
 main.obj: ../functions.h
 main.obj: ../clean.h
 main.obj: ../functions.h
+main.obj: ../init.h
+main.obj: ../scanner.h
 
 ../main.c:
+
+../common.h:
 
 ../uart.h:
 
@@ -74,7 +79,7 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/string.h:
 
 C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/xlocale/_string.h:
 
-../movement.h:
+../cyBot_Scan.h:
 
 ../open_interface.h:
 
@@ -86,11 +91,15 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_defs.h:
 
 C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h:
 
-../cyBot_Scan.h:
+../movement.h:
 
 ../functions.h:
 
 ../clean.h:
 
 ../functions.h:
+
+../init.h:
+
+../scanner.h:
 
