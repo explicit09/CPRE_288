@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "../Lab8/functions.h"
-#include "sensor-data.h"
+#include "sensor-data-2.h"
 
 dataa obj_data;
 
