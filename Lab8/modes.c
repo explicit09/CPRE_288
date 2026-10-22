@@ -9,11 +9,14 @@ void autonomous(oi_t *sensor_data)
     if(!check_click)
     {
         scan_IR_PING();
+        print_scan("** Raw data **\n", estimate);
+
         outlier_removal(estimate);
         moving_average(estimate);
         detect_object(estimate, &impp);
         print_scan("** Cleaned data **\n", estimate);
         print_objects(&impp);
+        clicked++;
     }
     else
     {
@@ -23,6 +26,7 @@ void autonomous(oi_t *sensor_data)
         int degrees_to_turn = 85 - impp.angle[small];
         turn(sensor_data, fabs(degrees_to_turn), clockwise);
         drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
+        clicked++;
     }
-    clicked++;
+
 }

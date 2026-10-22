@@ -33,7 +33,7 @@ int main(void)
         int i;
         letter = uart_receive();
 
-        if (letter == 'h') 
+        if (letter == 'h')
         {
             autonomous(sensor_data);
         }
