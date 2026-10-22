@@ -7,10 +7,14 @@
 #include "init.h"
 #include "scanner.h"
 
-float dist[91];
-int ir[91];
-float estimate[91];
 dataa impp;
+float dist[91];
+float estimate[91];
+int ir[91];
+int clicked = 0;
+int clockwise = 0;
+int degrees_to_turn = 0;
+int small = 0;
 
 int main(void)
 {
@@ -21,10 +25,8 @@ int main(void)
 
     cyBOT_Scan_t scan;
     int letter;
-    int clockwise = 0;
-    int degrees_to_turn;
-    int small = 0;
-    char message[50]; 
+
+    char message[50];
     while (1)
     {
         int i;
@@ -74,10 +76,6 @@ int main(void)
             point_to_smallest_obj(impp.angle[small]);
             sprintf(message, "The smallest is %d\n", small);
             print_to_putty(message);
-
-
-
-
         }
     }
 

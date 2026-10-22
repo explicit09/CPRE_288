@@ -23,7 +23,6 @@ void drive_mm(oi_t *sensor_data, int mm)
     oi_setWheels(0, 0);
 }
 
-
 double move_forward(oi_t *sensor, double distance)
 {
     double sum = 0.0;
@@ -56,7 +55,6 @@ void move_backward(oi_t *sensor, double distance)
 }
 
 // considering changing this to work for both clockwise and anti-clockwise, adding a bool to help out
-
 void turn(oi_t *sensor, int degrees, bool clockwise)
 {
     double deg = 0;
@@ -95,52 +93,3 @@ void correction(oi_t *sensor, int turn_distance)
         turn(sensor, 90, 1);
     }
 }
-
-// void main()
-//
-//{
-//
-//     oi_t *sensor_data = oi_alloc();
-//
-//     oi_init(sensor_data);
-//
-////
-//
-//    const int total_distance = 2000;
-//
-//    const int reverse = 150;
-//
-//    const int turn = 250;
-//
-//    int distance_left;
-//
-//    int distance_moved = 0;
-//
-//    distance_left = total_distance - distance_moved;
-//
-//    //move_backward(sensor_data, -150);
-//
-//    while (distance_moved < total_distance)
-//
-//    {
-//
-//        distance_moved += move_forward(sensor_data, distance_left); //distance_left should also be modified inside the while loop
-//
-//        distance_left = total_distance - distance_moved; //updates the distance left
-//
-//        if (bumped(sensor_data))
-//        {
-//
-//            //move_backward(sensor_data, reverse);
-//
-//            correction(sensor_data, turn);
-//            move_forward(sensor_data, 150);
-//
-//        }
-//
-//    }
-//
-//    oi_free(sensor_data);
-//
-//}
-//

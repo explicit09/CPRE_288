@@ -1,0 +1,28 @@
+#include "modes.h"
+#include "movement.h"
+#include "scanner.h"
+#include "clean.h"
+
+void autonomous(oi_t *sensor_data)
+{
+    int check_click = clicked % 2;
+    if(!check_click)
+    {
+        scan_IR_PING();
+        outlier_removal(estimate);
+        moving_average(estimate);
+        detect_object(estimate, &impp);
+        print_scan("** Cleaned data **\n", estimate);
+        print_objects(&impp);
+    }
+    else
+    {
+        int small = find_smallest(&impp);
+        point_to_smallest_obj(impp.angle[small]);
+        int clockwise = (impp.angle[small] < 90); 
+        int degrees_to_turn = 85 - impp.angle[small];
+        turn(sensor_data, fabs(degrees_to_turn), clockwise);
+        drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
+    }
+    clicked++;
+}
