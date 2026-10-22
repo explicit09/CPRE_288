@@ -20,8 +20,9 @@ mkdir -p .vscode/host-tests/build
 
 gcc -std=gnu99 \
   -I "$TIVAWARE_ROOT" \
-  tests/test_outlier_removal.c\
-  Lab8/clean.c\
-  -o .vscode/host-tests/build/test_find_smallest
+  tests/test_obj_detect.c\
+  tests/hardware_stubs.c\
+  Lab8/functions.c\
+  -o .vscode/host-tests/build/test_obj_detect
 
-  ./.vscode/host-tests/build/test_find_smallest
+  ./.vscode/host-tests/build/test_obj_detect

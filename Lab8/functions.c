@@ -108,12 +108,8 @@ void detect_object(float distance[], dataa *data)
             else
                 first = -1;                            // back to background
         }
-        //first = -1;
     }
-    
 }
-
-
 
 // same algo
 int find_smallest(dataa *data)
@@ -136,58 +132,3 @@ void point_to_smallest_obj(int smallest_obj_angle)
 {
     cyBOT_Scan(smallest_obj_angle, &scan);
 }
-
-//void scan_n_point()
-//{
-//    int meters = 0;
-//    int sum = 0;
-//    int avg = 0;
-//    for (meters = 0; meters <= 180; meters += 2)
-//    {
-//        cyBOT_Scan(meters, &scan); //scane 180
-//        dist[meters / 2] = scan.sound_dist; //from ping sensor
-//        for (avg = 0; avg < 3; avg++)
-//        {
-//
-//            cyBOT_Scan(meters, &scan); //multiple scans with taking avg of IR
-//            sum += scan.IR_raw_val;
-//
-//        }
-//        sum /= 3;
-//        ir[meters / 2] = sum; //it will return -1 if not enabled
-//        sum = 0;
-//
-//        estimate[meters / 2] = (4.80028 * pow(10, -12)) * pow(ir[meters / 2], 4)
-//                - (4.96639 * pow(10, -8)) * pow(ir[meters / 2], 3)
-//                + (0.000194691) * pow(ir[meters / 2], 2)
-//                - (0.350156 * ir[meters / 2]) + 260.87977;
-//    }
-//
-//    //print_scan is another function just to make our loves easier with printing these titles
-//    print_scan("** Raw noisy sensor data **\n", estimate);
-//
-//    outlier_removal(estimate);
-//    moving_average(estimate);
-//    print_scan("** Cleaned data **\n", estimate);
-//
-//    detect_object(estimate, &impp);
-//
-//    print_objects(&impp); //another function, to print the required data about objetcs, more deatiled i have in functions.c
-//    int i;
-//    for (i = 0; i < impp.obj; i++)
-//    {
-//        cyBOT_Scan(impp.angle[i + 1], &scan);
-//        timer_waitMillis(1000);
-//        //point_to_smallest_obj(impp.angle[i]);
-//        dist[meters / 2] = scan.sound_dist;
-//    }
-//
-//    outlier_removal(dist);
-//    moving_average(dist);
-//    print_scan("** Cleaned data **\n", dist);
-//
-//    small = find_smallest(&impp);
-//    point_to_smallest_obj(impp.angle[small]);
-//
-//    print_objects(&impp);
-//}
