@@ -23,6 +23,7 @@ gcc -std=gnu99 \
   tests/test_obj_detect.c\
   tests/hardware_stubs.c\
   Lab8/functions.c\
+  Lab8/clean.c\
   -o .vscode/host-tests/build/test_obj_detect
 
   ./.vscode/host-tests/build/test_obj_detect
