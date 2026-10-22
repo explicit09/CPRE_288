@@ -57,4 +57,8 @@ void manual_drive(oi_t *sensor_data,int letter)
         degrees_to_turn = 90 - impp.angle[small];
         turn(sensor_data, fabs(degrees_to_turn), clockwise);
     }
+    else
+    {
+        oi_setWheel(0, 0);
+    }
 }
