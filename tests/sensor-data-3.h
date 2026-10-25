@@ -1,7 +1,6 @@
 #ifndef SENSOR_DATA_3_H
 #define SENSOR_DATA_3_H
 
-// Source: lab_5_2/data.txt; distance in cm, index * 2 gives degrees.
 float sensor_data_array[91] = {
     178.2f,
     65.7f,

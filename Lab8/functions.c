@@ -57,7 +57,7 @@ static void add_object(float distance[], dataa *data, int first, int last)
     //my example was if the end index is 60 and start index if 50, end-start = 1o, but wont we have 11 indices that we should cover? (50,51,52,53,54,55,56,57,58,59,60)
     int j, n;
 
-    if (last - first + 1 < 5 || data->obj >= 3) 
+    if (last - first + 1 < 2) 
     //5 is one artbitary number i thought of. So, the miminum number of indexes that an object should span is 5 (5*2 = 10 degrees?)
     // so even in the worst case, we should have objects place atleast 10 degress apart from each other.
 

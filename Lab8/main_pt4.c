@@ -25,7 +25,7 @@ int main(void)
     oi_init(sensor_data);
 
     cyBOT_Scan_t scan;
-    int letter;
+    volatile int letter;
 
     char message[50];
     while (1)
@@ -36,6 +36,10 @@ int main(void)
         if (letter == 'h')
         {
             autonomous(sensor_data);
+        }
+        else
+        {
+            manual_drive(sensor_data, letter);
         }
 
         return 0;
