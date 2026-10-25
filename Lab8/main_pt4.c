@@ -12,9 +12,9 @@ dataa impp;
 float dist[91];
 float estimate[91];
 int ir[91];
-int clicked = 0;
-int clockwise = 0;
-int degrees_to_turn = 0;
+//int clicked = 0;
+//int clockwise = 0;
+//int degrees_to_turn = 0;
 int small = 0;
 
 int main(void)
@@ -42,6 +42,6 @@ int main(void)
             manual_drive(sensor_data, letter);
         }
 
-        return 0;
     }
+    return 0;
 }

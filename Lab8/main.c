@@ -12,7 +12,7 @@
 //float estimate[91];
 //int ir[91];
 //int clicked = 0;
-//int clockwise = 0;
+////int clockwise = 0; --> net: it doesn't like this
 //int degrees_to_turn = 0;
 //int small = 0;
 //
