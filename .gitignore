@@ -5,3 +5,4 @@
 .cproject
 org.eclipse*
 .settings/*
+.DS_Store
