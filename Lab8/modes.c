@@ -13,7 +13,12 @@ int clockwise = 0;
 void autonomous(oi_t *sensor_data)
 {
     int check_click = clicked % 2;
-    if (!check_click)
+    
+    if (sensor_data->bumpLeft || sensor_data->bumpRight)
+    {
+        corection(sensor_data, 150);
+    }
+    else if (!check_click)
     {
         scan_IR_PING();
         print_scan("** Raw data **\n", estimate);
@@ -58,6 +63,10 @@ void manual_drive(oi_t *sensor_data,int letter)
         clockwise = (impp.angle[small] < 90);
         degrees_to_turn = 90 - impp.angle[small];
         turn(sensor_data, fabs(degrees_to_turn), clockwise);
+    }
+    else if (letter = 'k')
+    {
+        correction(sensor_data, 150);
     }
     else
     {

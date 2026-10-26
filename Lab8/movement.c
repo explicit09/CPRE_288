@@ -81,7 +81,7 @@ void correction(oi_t *sensor, int turn_distance)
     if (sensor->bumpLeft)
     {
         move_backward(sensor, -150);
-        turn(sensor, 90, 1); // only for roomba 12
+        turn(sensor, 90, 1); 
         move_forward(sensor, turn_distance);
         turn(sensor, 90, 0);
     }
