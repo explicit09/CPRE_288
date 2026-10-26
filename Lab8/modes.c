@@ -20,6 +20,7 @@ void autonomous(oi_t *sensor_data)
     {
         print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
+        clicked --;
     }
     else if (!check_click)
     {
