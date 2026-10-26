@@ -11,3 +11,4 @@ extern int degrees_to_turn;
 
 void autonomous(oi_t *sensor_data);
 void manual_drive(oi_t *sensor_data,int letter);
+void scan_360(oi_t *sensor_data);

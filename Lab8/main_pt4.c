@@ -24,20 +24,17 @@ int main(void)
     oi_t *sensor_data = oi_alloc();
     oi_init(sensor_data);
 
-    cyBOT_Scan_t scan;
     volatile int letter;
 
-    char message[50];
     while (1)
     {
-        int i;
         letter = uart_receive();
 
         if (letter == 'h')
         {
             autonomous(sensor_data);
         }
-        else if (letter = 'o')
+        else if (letter == 'o')
         {
             scan_360(sensor_data);
         }

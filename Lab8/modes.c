@@ -15,9 +15,10 @@ int store_small_obect = 0;
 void autonomous(oi_t *sensor_data)
 {
     int check_click = clicked % 2;
-    
+
     if (sensor_data->bumpLeft || sensor_data->bumpRight)
     {
+        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
     }
     else if (!check_click)
@@ -42,8 +43,14 @@ void autonomous(oi_t *sensor_data)
     clicked++;
 }
 
-void manual_drive(oi_t *sensor_data,int letter)
+void manual_drive(oi_t *sensor_data, int letter)
 {
+    if (sensor_data->bumpLeft || sensor_data->bumpRight)
+    {
+        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
+        correction(sensor_data, 150);
+    }
+
     if (letter == 'w')
     {
         drive_mm(sensor_data, GO_MM);
@@ -68,7 +75,7 @@ void manual_drive(oi_t *sensor_data,int letter)
     }
     else if (letter == 'k')
     {
-        correction(sensor_data, 150);
+        correction(sensor_data, 150); // might actually be redundant since we have the auto correction at the start of the function
     }
     else
     {
@@ -90,11 +97,25 @@ void scan_360(oi_t *sensor_data)
     detect_object(estimate, &impp);
     small2 = find_smallest(&impp);
 
-    if(impp.angle[small] < impp.angle[small2])
+    /* the function has the following issues:
+     * 1. impp is updated during the second scan and at the moment we don't store more than
+     * 91 values since all scanning functions start at int i = 0; which is the index position
+     * for the array to be updated
+     *
+     * 2. comparing impp.angle[small] < impp.angle[small2] is invalid, as mentioned above
+     * immp has been updated already and has on,y the new objects.
+     *
+     * 3. Our point has to somehow understand that its more than 180 degrees and it might have
+     * to turn back to point the smallest object i.e. you scan the side with the smaller object
+     * first and then turn, you will hae to make the roomba turns back to the side which was
+     * scanned first.
+     */
+
+    if (impp.angle[small] < impp.angle[small2])
     {
         point_to_smallest_obj(small);
     }
-    else 
+    else
     {
         point_to_smallest_obj(small2);
     }
