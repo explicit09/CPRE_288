@@ -16,7 +16,7 @@ void autonomous(oi_t *sensor_data)
     
     if (sensor_data->bumpLeft || sensor_data->bumpRight)
     {
-        corection(sensor_data, 150);
+        correction(sensor_data, 150);
     }
     else if (!check_click)
     {
@@ -64,7 +64,7 @@ void manual_drive(oi_t *sensor_data,int letter)
         degrees_to_turn = 90 - impp.angle[small];
         turn(sensor_data, fabs(degrees_to_turn), clockwise);
     }
-    else if (letter = 'k')
+    else if (letter == 'k')
     {
         correction(sensor_data, 150);
     }

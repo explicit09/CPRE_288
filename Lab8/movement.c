@@ -11,8 +11,8 @@ void drive_mm(oi_t *sensor_data, int mm)
     double sum = 0;
     int speed;
 
-    if(mm> 0) speed = 100;
-    else speed = -100;
+    if(mm> 0) speed = 300;
+    else speed = -300;
 
     oi_setWheels(speed, speed);
     while (fabs(sum) < fabs((double) mm))
