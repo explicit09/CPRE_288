@@ -1,1 +1,7 @@
 .metadata/*
+/.metadata/
+.ccsproject
+.project
+.cproject
+org.eclipse*
+.settings/*

@@ -4,6 +4,8 @@
 "./init.obj"
 "./lcd.obj"
 "./main.obj"
+"./main_pt4.obj"
+"./modes.obj"
 "./movement.obj"
 "./open_interface.obj"
 "./scanner.obj"

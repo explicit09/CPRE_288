@@ -18,6 +18,8 @@ C_SRCS += \
 ../init.c \
 ../lcd.c \
 ../main.c \
+../main_pt4.c \
+../modes.c \
 ../movement.c \
 ../open_interface.c \
 ../scanner.c \
@@ -31,6 +33,8 @@ C_DEPS += \
 ./init.d \
 ./lcd.d \
 ./main.d \
+./main_pt4.d \
+./modes.d \
 ./movement.d \
 ./open_interface.d \
 ./scanner.d \
@@ -44,6 +48,8 @@ OBJS += \
 ./init.obj \
 ./lcd.obj \
 ./main.obj \
+./main_pt4.obj \
+./modes.obj \
 ./movement.obj \
 ./open_interface.obj \
 ./scanner.obj \
@@ -57,6 +63,8 @@ OBJS__QUOTED += \
 "init.obj" \
 "lcd.obj" \
 "main.obj" \
+"main_pt4.obj" \
+"modes.obj" \
 "movement.obj" \
 "open_interface.obj" \
 "scanner.obj" \
@@ -70,6 +78,8 @@ C_DEPS__QUOTED += \
 "init.d" \
 "lcd.d" \
 "main.d" \
+"main_pt4.d" \
+"modes.d" \
 "movement.d" \
 "open_interface.d" \
 "scanner.d" \
@@ -83,6 +93,8 @@ C_SRCS__QUOTED += \
 "../init.c" \
 "../lcd.c" \
 "../main.c" \
+"../main_pt4.c" \
+"../modes.c" \
 "../movement.c" \
 "../open_interface.c" \
 "../scanner.c" \
