@@ -15,7 +15,7 @@ void drive_mm(oi_t *sensor_data, int mm)
     else speed = -300;
 
     oi_setWheels(speed, speed);
-    while (fabs(sum) < fabs((double) mm))
+    while (!bumped(sensor_data) && fabs(sum) < fabs((double) mm))
     {
         oi_update(sensor_data);
         sum += sensor_data->distance;
