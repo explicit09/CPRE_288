@@ -37,6 +37,10 @@ int main(void)
         {
             autonomous(sensor_data);
         }
+        else if (letter = 'o')
+        {
+            scan_360(sensor_data);
+        }
         else
         {
             manual_drive(sensor_data, letter);

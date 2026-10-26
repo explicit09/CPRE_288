@@ -9,6 +9,8 @@ const int GO_MM = 15;
 int clicked = 0;
 int degrees_to_turn = 0;
 int clockwise = 0;
+int small2 = 0;
+int store_small_obect = 0;
 
 void autonomous(oi_t *sensor_data)
 {
@@ -71,5 +73,29 @@ void manual_drive(oi_t *sensor_data,int letter)
     else
     {
         oi_setWheels(0, 0);
+    }
+}
+
+void scan_360(oi_t *sensor_data)
+{
+    scan_IR_PING();
+    outlier_removal(estimate);
+    moving_average(estimate);
+    detect_object(estimate, &impp);
+    small = find_smallest(&impp);
+    turn(sensor_data, 180, 1);
+    scan_IR_PING();
+    outlier_removal(estimate);
+    moving_average(estimate);
+    detect_object(estimate, &impp);
+    small2 = find_smallest(&impp);
+
+    if(impp.angle[small] < impp.angle[small2])
+    {
+        point_to_smallest_obj(small);
+    }
+    else 
+    {
+        point_to_smallest_obj(small2);
     }
 }
