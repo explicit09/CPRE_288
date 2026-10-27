@@ -17,7 +17,7 @@ int find_smallest(dataa *data);
 void print_to_putty(char message[]);
 void print_scan(char title[], float d[]);
 void print_objects(dataa *data);
-void detect_object(float distance[], dataa *data);
+void detect_object(float distance[], float dist2[], dataa *data);
 void point_to_smallest_obj(int smallest_obj_angle);
 
 #endif

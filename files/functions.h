@@ -1,0 +1,23 @@
+//#include "cyBot_uart.h"
+#include "uart.h"
+#include "string.h"
+#include "cyBot_Scan.h"
+#include "open_interface.h"
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
+typedef struct{
+    double dect[10];    // closest distance to each object (cm)
+    double width[10];   // width of each object (cm)
+    int angle[10];      // direction of each object (deg)
+    int obj;            // how many objects were found
+}dataa;
+
+int find_smallest(dataa *data);
+void print_to_putty(char message[]);
+void print_scan(char title[], float d[]);
+void print_objects(dataa *data);
+void detect_object(float distance[], dataa *data);
+void point_to_smallest_obj(int smallest_obj_angle);
+
+#endif

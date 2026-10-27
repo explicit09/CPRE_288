@@ -21,7 +21,7 @@ void autonomous(oi_t *sensor_data)
     {
         print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
-        clicked --;
+        clicked -= 2;
     }
     else if (!check_click)
     {
@@ -29,7 +29,7 @@ void autonomous(oi_t *sensor_data)
         print_scan("** Raw data **\n", estimate);
         outlier_removal(estimate);
         moving_average(estimate);
-        detect_object(estimate, &impp);
+        detect_object(estimate, dist, &impp);
         print_scan("** Cleaned data **\n", estimate);
         print_objects(&impp);
     }
@@ -90,13 +90,13 @@ void scan_360(oi_t *sensor_data)
     scan_IR_PING();
     outlier_removal(estimate);
     moving_average(estimate);
-    detect_object(estimate, &impp);
+    detect_object(estimate,dist,  &impp);
     small = find_smallest(&impp);
     turn(sensor_data, 180, 1);
     scan_IR_PING();
     outlier_removal(estimate);
     moving_average(estimate);
-    detect_object(estimate, &impp);
+    detect_object(estimate, dist, &impp);
     small2 = find_smallest(&impp);
 
     /* the function has the following issues:

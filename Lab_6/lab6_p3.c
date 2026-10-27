@@ -44,7 +44,7 @@ int main(void)
 
 
    cyBOT_Scan_t scan;
-   cyBot_uart_init();
+   cyBOT_init_Scan(0b0111);
 
 //---------------------------------------
 //    for (z = 0; z <= 180; z += 2)

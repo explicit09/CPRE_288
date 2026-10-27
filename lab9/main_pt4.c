@@ -19,7 +19,8 @@ int ir[91];
 int small = 0;
 
 
-// Net--> just added common, clean, function.h, movements.h to folder 9
+// Net--> just added common, clean, function.h, movements.h, modes, etc to folder 9
+//in sanner.c ir is switched to adc
 int main(void)
 {
     init();

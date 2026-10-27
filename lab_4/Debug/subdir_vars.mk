@@ -6,6 +6,7 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_SRCS += \
+../main.exe \
 ../part5.exe 
 
 CMD_SRCS += \
@@ -67,6 +68,7 @@ C_SRCS__QUOTED += \
 "../tm4c123gh6pm_startup_ccs.c" 
 
 EXE_SRCS__QUOTED += \
+"../main.exe" \
 "../part5.exe" 
 
 OUT_SRCS__QUOTED += \

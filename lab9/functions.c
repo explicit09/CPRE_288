@@ -85,7 +85,7 @@ static void add_object(float distance[], dataa *data, int first, int last)
 // An object starts where the distance drops by 20 cm or more and
 // ends where it jumps back up by 20 or more.
 //prev we had 50 cm, lets see how this works
-void detect_object(float distance[], dataa *data)
+void detect_object(float distance[], float dist2[], dataa *data)
 {
     int first = -1;         // so if we are inside the bounds of the object, it will be 1, if not an obj, first will be -1
     int idx;
@@ -101,7 +101,7 @@ void detect_object(float distance[], dataa *data)
         if (diff <= -20 || diff >= 20)       // an edge
         {
             if (first >= 0) //within the bounds of the obj
-                add_object(distance, data, first, idx - 1);   // object just ended so we add it 
+                add_object(dist2, data, first, idx - 1);   // object just ended so we add it
 
             if (diff <= -20 && distance[idx] < 300.0f)
                 first = idx;                           // something closer starts here

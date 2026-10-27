@@ -5,6 +5,7 @@
 
 extern dataa impp;
 extern float estimate[91];
+extern float dist[91];
 extern int clicked;
 extern int clockwise;
 extern int small;

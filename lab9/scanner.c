@@ -25,6 +25,7 @@ void scan_IR_PING(void)
             sum += adc_read(); //--> ADC now just not changing name
         }
         sum /= 3;
+        //sum = adc_read();
         ir[i / 2] = sum; // it will return -1 if not enabled
         sum = 0;
 
@@ -51,6 +52,7 @@ void scan_IR(void)
             sum += adc_read(); //made change so this adc (DIDN't want to change name)
         }
         sum /= 3;
+        //sum = adc_read();
         ir[i / 2] = sum; // -->  it will return -1 if not enabled
         sum = 0;
 
