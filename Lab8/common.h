@@ -5,3 +5,4 @@
 #include "Timer.h"
 #include "cyBot_Scan.h"
 #include "open_interface.h"
+#include "adc.h"

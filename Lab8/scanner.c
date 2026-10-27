@@ -1,6 +1,7 @@
 #include "scanner.h"
 #include "cyBot_Scan.h"
 #include "math.h"
+#include "adc.h"
 
 cyBOT_Scan_t scan;
 extern float dist[91];
@@ -21,13 +22,14 @@ void scan_IR_PING(void)
         for (avg = 0; avg < 3; avg++)
         {
             cyBOT_Scan(i, &scan); // multiple scans with taking avg of IR
-            sum += scan.IR_raw_val;
+            sum += adc_read();
         }
         sum /= 3;
         ir[i / 2] = sum; // it will return -1 if not enabled
         sum = 0;
 
-        estimate[i / 2] = (4.80028 * pow(10, -12)) * pow(ir[i / 2], 4) - (4.96639 * pow(10, -8)) * pow(ir[i / 2], 3) + (0.000194691) * pow(ir[i / 2], 2) - (0.350156 * ir[i / 2]) + 260.87977;
+        //estimate[i / 2] = (4.80028 * pow(10, -12)) * pow(ir[i / 2], 4) - (4.96639 * pow(10, -8)) * pow(ir[i / 2], 3) + (0.000194691) * pow(ir[i / 2], 2) - (0.350156 * ir[i / 2]) + 260.87977;
+        estimate[i/2] = 50316.8052 * pow(ir[i/2], -1.06489);
     }
 }
 void scan_PING(void)
@@ -46,12 +48,13 @@ void scan_IR(void)
         for (avg = 0; avg < 3; avg++)
         {
             cyBOT_Scan(i, &scan); // multiple scans with taking avg of IR
-            sum += scan.IR_raw_val;
+            sum += adc_read();
         }
         sum /= 3;
         ir[i / 2] = sum; // it will return -1 if not enabled
         sum = 0;
 
-        estimate[i / 2] = (4.80028 * pow(10, -12)) * pow(ir[i / 2], 4) - (4.96639 * pow(10, -8)) * pow(ir[i / 2], 3) + (0.000194691) * pow(ir[i / 2], 2) - (0.350156 * ir[i / 2]) + 260.87977;
+        //estimate[i / 2] = (4.80028 * pow(10, -12)) * pow(ir[i / 2], 4) - (4.96639 * pow(10, -8)) * pow(ir[i / 2], 3) + (0.000194691) * pow(ir[i / 2], 2) - (0.350156 * ir[i / 2]) + 260.87977;
+        estimate[i/2] = 50316.8052 * pow(ir[i/2], -1.06489);
     }
 }

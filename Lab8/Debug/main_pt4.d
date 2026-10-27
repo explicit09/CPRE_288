@@ -28,6 +28,7 @@ main_pt4.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/std
 main_pt4.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/math.h
 main_pt4.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_defs.h
 main_pt4.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
+main_pt4.obj: ../adc.h
 main_pt4.obj: ../movement.h
 main_pt4.obj: ../functions.h
 main_pt4.obj: ../clean.h
@@ -36,6 +37,7 @@ main_pt4.obj: ../init.h
 main_pt4.obj: ../scanner.h
 main_pt4.obj: ../modes.h
 main_pt4.obj: ../functions.h
+main_pt4.obj: ../adc.h
 
 ../main_pt4.c:
 
@@ -93,6 +95,8 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_defs.h:
 
 C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h:
 
+../adc.h:
+
 ../movement.h:
 
 ../functions.h:
@@ -108,4 +112,6 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
 ../modes.h:
 
 ../functions.h:
+
+../adc.h:
 

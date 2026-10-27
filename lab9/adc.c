@@ -25,6 +25,7 @@ void adc_init(void)
 
     ADC1_SSMUX1_R = 0xAAAA; //mux for ss1, where all the 1 samples have been configured to use input channel 10 (pb4), so selct lines should == 10 == 0xA
     ADC1_SSCTL1_R = 0x6444;
+    ADC1_SAC_R = 0x4; // 16 averages per sample (for part 2)
     ADC1_ACTSS_R |= 0x02; //ss1
 }
 

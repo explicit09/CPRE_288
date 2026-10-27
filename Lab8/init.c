@@ -9,6 +9,8 @@ void init()
     uart_init();
     uart_interrupt();
 
+    adc_init();
+
     cyBOT_init_Scan(0b0111);
     //cyBot_uart_init();
     right_calibration_value = 227500;

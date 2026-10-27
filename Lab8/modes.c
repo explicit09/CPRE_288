@@ -4,6 +4,7 @@
 #include "clean.h"
 #include "math.h"
 #include "open_interface.h"
+#include "adc.h"
 
 const int GO_MM = 15;
 int clicked = 0;
@@ -18,8 +19,8 @@ void autonomous(oi_t *sensor_data)
 
     if (sensor_data->bumpLeft || sensor_data->bumpRight)
     {
-        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
+        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         clicked --;
     }
     else if (!check_click)
@@ -48,8 +49,8 @@ void manual_drive(oi_t *sensor_data, int letter)
 {
     if (sensor_data->bumpLeft || sensor_data->bumpRight)
     {
-        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
+        print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
     }
 
     if (letter == 'w')

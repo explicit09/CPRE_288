@@ -1,4 +1,5 @@
 "./Timer.obj"
+"./adc.obj"
 "./clean.obj"
 "./functions.obj"
 "./init.obj"

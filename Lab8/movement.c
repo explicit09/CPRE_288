@@ -81,15 +81,15 @@ void correction(oi_t *sensor, int turn_distance)
     if (sensor->bumpLeft)
     {
         move_backward(sensor, -150);
-        turn(sensor, 90, 1); 
+        turn(sensor, 10, 1);
         move_forward(sensor, turn_distance);
-        turn(sensor, 90, 0);
+        turn(sensor, 10, 0);
     }
     else
     {
         move_backward(sensor, -150);
-        turn(sensor, 90, 0);
+        turn(sensor, 10, 0);
         move_forward(sensor, turn_distance);
-        turn(sensor, 90, 1);
+        turn(sensor, 10, 1);
     }
 }

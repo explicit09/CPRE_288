@@ -29,10 +29,12 @@ modes.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/math.h
 modes.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/_defs.h
 modes.obj: C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
 modes.obj: ../lcd.h
+modes.obj: ../adc.h
 modes.obj: ../movement.h
 modes.obj: ../scanner.h
 modes.obj: ../clean.h
 modes.obj: ../functions.h
+modes.obj: ../adc.h
 
 ../modes.c:
 
@@ -92,6 +94,8 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
 
 ../lcd.h:
 
+../adc.h:
+
 ../movement.h:
 
 ../scanner.h:
@@ -99,4 +103,6 @@ C:/ti/ccs1271/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/machine/_limits.h
 ../clean.h:
 
 ../functions.h:
+
+../adc.h:
 

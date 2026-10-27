@@ -13,6 +13,7 @@ LIB_SRCS += \
 
 C_SRCS += \
 ../Timer.c \
+../adc.c \
 ../clean.c \
 ../functions.c \
 ../init.c \
@@ -28,6 +29,7 @@ C_SRCS += \
 
 C_DEPS += \
 ./Timer.d \
+./adc.d \
 ./clean.d \
 ./functions.d \
 ./init.d \
@@ -43,6 +45,7 @@ C_DEPS += \
 
 OBJS += \
 ./Timer.obj \
+./adc.obj \
 ./clean.obj \
 ./functions.obj \
 ./init.obj \
@@ -58,6 +61,7 @@ OBJS += \
 
 OBJS__QUOTED += \
 "Timer.obj" \
+"adc.obj" \
 "clean.obj" \
 "functions.obj" \
 "init.obj" \
@@ -73,6 +77,7 @@ OBJS__QUOTED += \
 
 C_DEPS__QUOTED += \
 "Timer.d" \
+"adc.d" \
 "clean.d" \
 "functions.d" \
 "init.d" \
@@ -88,6 +93,7 @@ C_DEPS__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../Timer.c" \
+"../adc.c" \
 "../clean.c" \
 "../functions.c" \
 "../init.c" \
