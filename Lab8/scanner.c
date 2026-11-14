@@ -22,7 +22,7 @@ void scan_IR_PING(void)
         for (avg = 0; avg < 3; avg++)
         {
             cyBOT_Scan(i, &scan); // multiple scans with taking avg of IR
-            sum += adc_read();
+            sum += scan.IR_raw_val; //for part 8 need to change back to IR values
         }
         sum /= 3;
         ir[i / 2] = sum; // it will return -1 if not enabled
@@ -48,7 +48,7 @@ void scan_IR(void)
         for (avg = 0; avg < 3; avg++)
         {
             cyBOT_Scan(i, &scan); // multiple scans with taking avg of IR
-            sum += adc_read();
+            sum += scan.IR_raw_val;
         }
         sum /= 3;
         ir[i / 2] = sum; // it will return -1 if not enabled

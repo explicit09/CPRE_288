@@ -5,6 +5,7 @@
 #include "math.h"
 #include "open_interface.h"
 #include "adc.h"
+#include "uart.h"
 
 const int GO_MM = 15;
 int clicked = 0;
@@ -12,37 +13,40 @@ int degrees_to_turn = 0;
 int clockwise = 0;
 int small2 = 0;
 int store_small_obect = 0;
+char title[50];
 
 void autonomous(oi_t *sensor_data)
 {
-    int check_click = clicked % 2;
 
+    scan_IR_PING();
+    //print_scan("** Raw data **\n", estimate);
+    outlier_removal(estimate);
+    moving_average(estimate);
+    detect_object(estimate, dist, &impp);
+    print_scan("", dist);
+//sprintf(title, "END");
+    //      print_to_putty(title);
+    //print_objects(&impp);
+
+}
+
+void auto_move(oi_t *sensor_data)
+{
     if (sensor_data->bumpLeft || sensor_data->bumpRight)
     {
         print_to_putty("ohh ohh I bumped!!!!!!!!!!!!!!!");
         correction(sensor_data, 150);
         clicked -= 2;
     }
-    else if (!check_click)
-    {
-        scan_IR_PING();
-        print_scan("** Raw data **\n", estimate);
-        outlier_removal(estimate);
-        moving_average(estimate);
-        detect_object(estimate, dist, &impp);
-        print_scan("** Cleaned data **\n", estimate);
-        print_objects(&impp);
-    }
-    else
-    {
-        small = find_smallest(&impp);
-        point_to_smallest_obj(impp.angle[small]);
-        clockwise = (impp.angle[small] < 90);
-        degrees_to_turn = 85 - impp.angle[small];
-        turn(sensor_data, fabs(degrees_to_turn), clockwise);
-        drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
-    }
-    clicked++;
+
+    small = find_smallest(&impp);
+    point_to_smallest_obj(impp.angle[small]);
+    clockwise = (impp.angle[small] < 90);
+    degrees_to_turn = 85 - impp.angle[small];
+    turn(sensor_data, fabs(degrees_to_turn), clockwise);
+    drive_mm(sensor_data, (impp.dect[small] - 12) * 10);
+    uart_sendChar('f');
+    uart_sendChar('\n');
 }
 
 void manual_drive(oi_t *sensor_data, int letter)
@@ -90,7 +94,7 @@ void scan_360(oi_t *sensor_data)
     scan_IR_PING();
     outlier_removal(estimate);
     moving_average(estimate);
-    detect_object(estimate,dist,  &impp);
+    detect_object(estimate, dist, &impp);
     small = find_smallest(&impp);
     turn(sensor_data, 180, 1);
     scan_IR_PING();

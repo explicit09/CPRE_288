@@ -7,7 +7,7 @@ cyBOT_Scan_t scan;
 void print_to_putty(char message[]) //same as before
 {
     int k;
-    uart_sendChar('\r');
+    //uart_sendChar('\r');
     for (k = 0; k < strlen(message); k++)
     {
         uart_sendChar(message[k]);
@@ -20,8 +20,8 @@ void print_scan(char title[], float d[])
     char message[50];
     int k;
 
-    print_to_putty(title);
-    print_to_putty("\nDegrees\t\tDistance (cm)\t\n");
+    //print_to_putty(title);
+    //print_to_putty("\nDegrees\t\tDistance (cm)\t\n");
     for (k = 0; k <  91; k++)
     {
         sprintf(message, "%d\t\t%.1f\n", k * 2, d[k]);

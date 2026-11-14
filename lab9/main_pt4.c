@@ -8,6 +8,7 @@
 #include "scanner.h"
 #include "modes.h"
 #include "adc.h"
+#include "uart.h"
 
 dataa impp;
 float dist[91];
@@ -24,29 +25,56 @@ int small = 0;
 int main(void)
 {
     init();
+    timer_init();
+    //lcd_init();
+    uart_init();
 
     oi_t *sensor_data = oi_alloc();
     oi_init(sensor_data);
 
     volatile int letter;
+    char message[100];
 
-    while (1)
+    letter = uart_receive();
+    if(letter == 'A')
     {
-        letter = uart_receive();
+        drive_mm(sensor_data, 200);
 
-        if (letter == 'h')
-        {
-            autonomous(sensor_data);
-        }
-        else if (letter == 'o')
-        {
-            scan_360(sensor_data);
-        }
-        else
-        {
-            manual_drive(sensor_data, letter);
-        }
-
+        sprintf(message, "CliffFrontLeft %d, CliffFrontRight %d", sensor_data->cliffFrontLeft, sensor_data->cliffFrontRight);
+        print_to_putty(message);
     }
+
+
+//    while (1)
+//    {
+//        letter = uart_receive();
+//
+//        if (letter == 'h')
+//        {
+//            autonomous(sensor_data);
+//        }
+//        else if (letter == 'H')
+//        {
+//            auto_move(sensor_data);
+//        }
+//        else if (letter == 'o')
+//        {
+//            scan_360(sensor_data);
+//        }
+//        else
+//        {
+//            manual_drive(sensor_data, letter);
+//            uart_sendChar('f');
+//            uart_sendChar('\n');
+//        }
+//       // letter = uart_receive();
+//
+//
+//        //uart_sendChar['']
+//
+//
+//
+//    }
+
     return 0;
 }

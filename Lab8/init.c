@@ -9,7 +9,7 @@ void init()
     uart_init();
     uart_interrupt();
 
-    adc_init();
+    //adc_init();
 
     cyBOT_init_Scan(0b0111);
     //cyBot_uart_init();

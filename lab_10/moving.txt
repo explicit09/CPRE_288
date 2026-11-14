@@ -1,0 +1,10 @@
+
+#YouTube video 1 
+from tinkter import * #This imports everything fom tinker. in kinter everything uses a widget
+
+root = Tk() #this opens a window in Tinter is it the root widget
+
+#to create anything in kinter you need to 1). define the thing 2). put it up on the screen
+myLabel = Label(root, text = "Hello World!") #1). we are dinfing a variable, so creating a label widget
+myLabel.pack() #shoving the label on to the screen (packaging)
+

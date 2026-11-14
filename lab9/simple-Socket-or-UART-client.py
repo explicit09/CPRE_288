@@ -37,6 +37,8 @@ cybot = cybot_socket.makefile("rbw", buffering=0)  # makefile creates a file obj
 
 # Send some text: Either 1) Choose "Hello" or 2) have the user enter text to send
 # send_message = "Hello\n"                            # 1) Hard code message to "Hello", or
+
+fig = None
 send_message = input("Enter a message:") + '\n'   # 2) Have user enter text
 
 cybot.write(send_message.encode()) # Convert String to bytes (i.e., encode), and send data to the server
@@ -55,82 +57,101 @@ print("Sent to server: " + send_message)
 #angle_radians = []
 #distance = []
 # Send messges to server until user sends "quit"
-while send_message != 'quit\n':
+while send_message != 'quit':
 
-        # Check if a sensor scan command has been sent
-        if (send_message == "H\n") or (send_message == "h\n"):
+        cybot.write(b"h")
+        print("Requested Sensor scan from Cybot:\n")
 
-                print("Requested Sensor scan from Cybot:\n")
-                rx_message = bytearray(1) # Initialize a byte array
+        angle_degrees = [] 
+        angle_radians = []
+        distance = []
+        rahh = 0
 
-                # Create or overwrite existing sensor scan data file
-                file_object = open(full_path + filename,'w') # Open the file: file_object is just a variable for the file "handler" returned by open()
+        rx_message = ""
+        file_object = open(full_path + filename,'w')
+        #file_object.write("Degrees Distance(cm)\n")
+        while not rx_message.endswith("END\n"):
+                rx_bytes = cybot.readline()
+                rx_message.encode().strip()
+                file_object.write(rx_message + "\n")
+                print(rx_message.decode())
+                #print(rahh)
+                #rahh += 1
+                data = rx_message.split()
+                #if len(data) > 0 and data[0] == "Degress (cm)":
 
-                while (rx_message.decode() != "END\n"): # Collect sensor data until "END" recieved
-                        rx_message = cybot.readline()   # Wait for sensor response, readline expects message to end with "\n"
-                        print(rx_message.decode()) # Convert message from bytes to String (i.e., decode), then print
+                angle_degrees = np.array(angle_degrees)
+                distance_plot = np.minimum(np.array(distance), 100)
 
-                                      
+                if fig is None or not plt.fignum_exists(fig.number):
+                        fig, ax = plt.subplots(subplot_kw={'projection' : 'polar'})
+                ax.clear()
 
-        else:                
-                print("Waiting for server reply\n")
-                rx_message = cybot.readline()      # Wait for a message, readline expects message to end with "\n"
-                print("Got a message from server: " + rx_message.decode() + "\n") # Convert message from bytes to String (i.e., decode)
-        
-        file_object.write(rx_message.decode())  # Write a line of sensor data to the file
-        # data = rx_message.split()    # Split line into columns (by default delineates columns by whitespace)
-        # angle_degrees.append(float(data[0]))  # Column 0 holds the angle at which distance was measured
-        # distance.append(float(data[1]))       # Column 1 holds the distance that was measured at a given angle
-        # # Convert python sequence (list of strings) into a numpy array
-        # angle_degrees = np.array(angle_degrees) # Avoid "TypeError: can't multiply sequence by non-int of type float"
-        # # Link for more info: https://www.freecodecamp.org/news/typeerror-cant-multiply-sequence-by-non-int-of-type-float-solved-python-error/
-                                        
-        # angle_radians = (np.pi/180) * angle_degrees # Convert degrees into radians
-
-        # # Create a polar plot
-        # fig, ax = plt.subplots(subplot_kw={'projection': 'polar'}) # One subplot of type polar
-        # ax.plot(angle_radians, distance, color='r', linewidth=4.0)  # Plot distance verse angle (in radians), using red, line width 4.0
-        # ax.set_xlabel('Distance (m)', fontsize = 14.0)  # Label x axis
-        # ax.set_ylabel('Angle (degrees)', fontsize = 14.0) # Label y axis
-        # ax.xaxis.set_label_coords(0.5, 0.15) # Modify location of x axis label (Typically do not need or want this)
-        # ax.tick_params(axis='both', which='major', labelsize=14) # set font size of tick labels
-        # ax.set_rmax(400)                    # Saturate distance at 2.5 meters
-        # ax.set_rticks([0, 50, 100, 150, 200, 250, 300, 350, 400])   # Set plot "distance" tick marks at .5, 1, 1.5, 2, and 2.5 meters
-        # ax.set_rlabel_position(-22.5)     # Adjust location of the radial labels
-        # ax.set_thetamax(180)              # Saturate angle to 180 degrees
-        # ax.set_xticks(np.arange(0,np.pi+.1,np.pi/4)) # Set plot "angle" tick marks to pi/4 radians (i.e., displayed at 45 degree) increments
-        #                                      # Note: added .1 to pi to go just beyond pi (i.e., 180 degrees) so that 180 degrees is displayed
-        # ax.grid(True)                     # Show grid lines
+                ax.plot(angle_degrees, distance, color='r', linewidth=4.0)  # Plot distance verse angle (in radians), using red, line width 4.0
+                ax.set_xlabel('Distance (m)', fontsize = 14.0)  # Label x axis
+                ax.set_ylabel('Angle (degrees)', fontsize = 14.0) # Label y axis
+                ax.xaxis.set_label_coords(0.5, 0.15) # Modify location of x axis label (Typically do not need or want this)
+                ax.tick_params(axis='both', which='major', labelsize=14) # set font size of tick labels
+                ax.set_rmax(1200)                    # Saturate distance at 2.5 meters
+                ax.set_rticks([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200])   # Set plot "distance" tick marks at .5, 1, 1.5, 2, and 2.5 meters
+                ax.set_rlabel_position(-22.5)     # Adjust location of the radial labels
+                ax.set_thetamax(180)              # Saturate angle to 180 degrees
+                ax.set_xticks(np.arange(0,np.pi+.1,np.pi/4)) # Set plot "angle" tick marks to pi/4 radians (i.e., displayed at 45 degree) increments
+                                             # Note: added .1 to pi to go just beyond pi (i.e., 180 degrees) so that 180 degrees is displayed
+                ax.grid(True)                     # Show grid lines
 
         # # Create title for plot (font size = 14pt, y & pad controls title vertical location)
-        # ax.set_title("Polar Plot of CyBot Sensor Scan from 0 to 180 Degrees", size=14, y=1.0, pad=-24) 
-        # plt.show()  # Display plot
-
-        send_message = input("Enter a message (enter quit to exit):") + '\n' # Enter next message to send to server
-        cybot.write(send_message.encode()) # Convert String to bytes (i.e., encode), and send data to the server
-        
-
-# Description: Display using a polar plot the distance measurements collected by a CyBot 180 degree 
-# sensor scan at 4 degree increments from 0 to 180 degrees. Sensor data read from a text file.
-
-# Original Code example modified by: Phillip Jones (10/02/2021), (05/15/2023)
-# Original polar plot code example from matplot: https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_demo.html
-
-# Useful matplotlib tutorial: https://matplotlib.org/stable/tutorials/introductory/pyplot.html
-# Useful best practices Quick Start: https://matplotlib.org/stable/tutorials/introductory/quick_start.html
-# General Python Reference/Tutorials: https://www.w3schools.com/python/ 
-
-# Quick YouTube Overviews (See above links as primary resources for additional details): 
-# - Quick Polar Plot (subplot) Overview: https://www.youtube.com/watch?v=pb-pZtvkGPM
-# - Quick subplots Overview : https://www.youtube.com/watch?v=Tqph7_qMujk
-
-#Import/Include useful math and plotting functions
+                ax.set_title("Polar Plot of CyBot Sensor Scan from 0 to 180 Degrees", size=14, y=1.0, pad=-24) 
+                plt.show()  # Display plot
 
 
-# A little python magic to make it more convient for you to ajust where you want the data file to live
-# Link for more info: https://towardsthecloud.com/get-relative-path-python 
 
+                
+                #print("                  rah")
+                        
+                #elif len(data) == 2:
+                        #try:
+                                #print("                 (1")
+                                #angle_degrees.append(float(data[0]))
+                                #distance.append(float(data[1]))
+                        #except ValueError:
+                                #print("                 (2")
+                                #pass
+        #if len(angle_degrees) > 0:
+                
+                #file_object = open(full_path + filename,'w')
+                #file_object.write("Distance Distance(cm)\n")
 
+                #for i in range(len(angle_degrees)):
+                        #file_object.write(str(angle_degrees[i]) + " " + str(distance[i]) + "\n")
+        # if(rx_message.endswith("END\n")):
+        #         file_object.close()
+
+                # angle_degrees = np.array(angle_degrees)
+                # distance_plot = np.minimum(np.array(distance), 100)
+
+                # if fig is None or not plt.fignum_exists(fig.number):
+                #         fig, ax = plt.subplots(subplot_kw={'projection' : 'polar'})
+                # ax.clear()
+
+                # ax.plot(angle_degrees, distance, color='r', linewidth=4.0)  # Plot distance verse angle (in radians), using red, line width 4.0
+                # ax.set_xlabel('Distance (m)', fontsize = 14.0)  # Label x axis
+                # ax.set_ylabel('Angle (degrees)', fontsize = 14.0) # Label y axis
+                # ax.xaxis.set_label_coords(0.5, 0.15) # Modify location of x axis label (Typically do not need or want this)
+                # ax.tick_params(axis='both', which='major', labelsize=14) # set font size of tick labels
+                # ax.set_rmax(1200)                    # Saturate distance at 2.5 meters
+                # ax.set_rticks([0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200])   # Set plot "distance" tick marks at .5, 1, 1.5, 2, and 2.5 meters
+                # ax.set_rlabel_position(-22.5)     # Adjust location of the radial labels
+                # ax.set_thetamax(180)              # Saturate angle to 180 degrees
+                # ax.set_xticks(np.arange(0,np.pi+.1,np.pi/4)) # Set plot "angle" tick marks to pi/4 radians (i.e., displayed at 45 degree) increments
+                #                              # Note: added .1 to pi to go just beyond pi (i.e., 180 degrees) so that 180 degrees is displayed
+                # ax.grid(True)                     # Show grid lines
+
+        # # Create title for plot (font size = 14pt, y & pad controls title vertical location)
+                ax.set_title("Polar Plot of CyBot Sensor Scan from 0 to 180 Degrees", size=14, y=1.0, pad=-24) 
+                plt.show()  # Display plot
+
+        send_message = input("Enter a message (enter quit to exit):") + '\n'
 
 
 print("Client exiting, and closing file descriptor, and/or network socket\n")

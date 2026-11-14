@@ -1,17 +1,17 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Mon Oct 26 22:23:31 2026
+>> Linked Thu Oct 29 15:05:17 2026
 
 OUTPUT FILE NAME:   <Lab8.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000069a1
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00006891
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  00006ecf  00039131  R  X
+  FLASH                 00000000   00040000  00006dbf  00039241  R  X
   SRAM                  20000000   00008000  00001497  00006b69  RW X
 
 
@@ -19,11 +19,11 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00006ed8   00006ed8    r-x
+00000000    00000000    00006dc8   00006dc8    r-x
   00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00006968   00006968    r-x .text
-  00006bd8    00006bd8    000002a3   000002a3    r-- .const
-  00006e80    00006e80    00000058   00000058    r-- .cinit
+  0000026c    0000026c    00006858   00006858    r-x .text
+  00006ac8    00006ac8    000002a3   000002a3    r-- .const
+  00006d70    00006d70    00000058   00000058    r-- .cinit
 20000000    20000000    0000149d   00000000    rw-
   20000000    20000000    0000026c   00000000    rw- .vtable
   20000270    20000270    00000800   00000000    rw- .stack
@@ -40,7 +40,7 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    0000026c     
                   00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
 
-.text      0    0000026c    00006968     
+.text      0    0000026c    00006858     
                   0000026c    00000c20     open_interface.obj (.text)
                   00000e8c    00000a4e     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:__TI_printfi)
                   000018da    00000002                                   : _lock.c.obj (.text:_nop)
@@ -55,102 +55,101 @@ section   page    origin      length       input sections
                   00003f00    00000270     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:_pconv_a)
                   00004170    00000260     libcybotScan.lib : cyBot_Scan.obj (.text)
                   000043d0    00000248     Timer.obj (.text)
-                  00004618    0000021c     scanner.obj (.text)
-                  00004834    000001ec     libcybotScan.lib : ping.obj (.text)
-                  00004a20    000001d0     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:_pconv_g)
-                  00004bf0    000001b6                                   : fd_add_t2.asm.obj (.text)
-                  00004da6    00000002                                   : div0.asm.obj (.text)
-                  00004da8    00000184     uart.obj (.text)
-                  00004f2c    00000174     rtsv7M4_T_le_v4SPD16_eabi.lib : k_sin.c.obj (.text:__kernel_sin)
-                  000050a0    00000170                                   : k_cos.c.obj (.text:__kernel_cos)
-                  00005210    00000158     libcybotScan.lib : servo.obj (.text)
-                  00005368    00000158     rtsv7M4_T_le_v4SPD16_eabi.lib : e_sqrt.c.obj (.text:sqrt)
-                  000054c0    0000013c                                   : _printfi.c.obj (.text:_pconv_e)
-                  000055fc    00000136                                   : fd_div_t2.asm.obj (.text)
-                  00005732    00000002     --HOLE-- [fill = 0]
-                  00005734    00000124                                   : _printfi.c.obj (.text:fcvt)
-                  00005858    00000118     libcybotScan.lib : ir.obj (.text)
-                  00005970    00000110     adc.obj (.text)
-                  00005a80    00000110     rtsv7M4_T_le_v4SPD16_eabi.lib : s_scalbn.c.obj (.text:scalbn)
-                  00005b90    00000100                                   : memory.c.obj (.text:aligned_alloc)
-                  00005c90    000000fc                                   : fd_mul_t2.asm.obj (.text)
-                  00005d8c    000000f8                                   : s_floor.c.obj (.text:floor)
-                  00005e84    000000e4                                   : memory.c.obj (.text:free)
-                  00005f68    000000b1                                   : _printfi.c.obj (.text:_ltostr)
-                  00006019    00000001     --HOLE-- [fill = 0]
-                  0000601a    0000009c                                   : memcpy_t2.asm.obj (.text)
-                  000060b6    00000096                                   : ull_div_t2.asm.obj (.text)
-                  0000614c    00000086                                   : fd_cmp_t2.asm.obj (.text:__aeabi_cdcmple)
-                  000061d2    00000086                                   : fd_cmp_t2.asm.obj (.text:__aeabi_cdrcmple)
-                  00006258    0000007a                                   : memset_t2.asm.obj (.text)
-                  000062d2    00000002     --HOLE-- [fill = 0]
-                  000062d4    00000070                                   : memory.c.obj (.text:split)
-                  00006344    0000006e                                   : _printfi.c.obj (.text:_mcpy)
-                  000063b2    0000006e                                   : fd_tos_t2.asm.obj (.text)
-                  00006420    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00006488    00000064                                   : ti_fmax.c.obj (.text:fminf)
-                  000064ec    00000064                                   : s_frexp.c.obj (.text:frexp)
-                  00006550    0000005c                                   : ti_fmax.c.obj (.text:fmaxf)
-                  000065ac    00000056                                   : _printfi.c.obj (.text:_pconv_f)
-                  00006602    00000054                                   : _ltoa.c.obj (.text:__TI_ltoa)
-                  00006656    00000052                                   : _printfi.c.obj (.text:_ecpy)
-                  000066a8    0000004c                                   : atoi.c.obj (.text:atoi)
-                  000066f4    00000048                                   : fd_toi_t2.asm.obj (.text)
-                  0000673c    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  00006780    00000044                                   : fd_tou_t2.asm.obj (.text)
-                  000067c4    00000040                                   : sprintf.c.obj (.text:sprintf)
-                  00006804    00000040                                   : vsnprintf.c.obj (.text:vsnprintf)
-                  00006844    0000003e                                   : _printfi.c.obj (.text:_fcpy)
-                  00006882    0000003e     main_pt4.obj (.text)
-                  000068c0    0000003c     init.obj (.text)
-                  000068fc    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.text:calloc)
-                  00006934    00000038                                   : fs_tod_t2.asm.obj (.text)
-                  0000696c    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
-                  000069a0    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  000069d4    00000030                                   : vsnprintf.c.obj (.text:_outs)
-                  00006a04    0000002e                                   : i_tofd_t2.asm.obj (.text)
-                  00006a32    00000002     --HOLE-- [fill = 0]
-                  00006a34    00000028                                   : memory.c.obj (.text:free_list_insert)
-                  00006a5c    0000001c                                   : memory.c.obj (.text:free_list_remove)
-                  00006a78    0000001c                                   : memccpy.c.obj (.text:memccpy)
-                  00006a94    0000001a                                   : s_copysign.c.obj (.text:copysign)
-                  00006aae    00000018                                   : vsnprintf.c.obj (.text:_outc)
-                  00006ac6    00000018                                   : sprintf.c.obj (.text:_outs)
-                  00006ade    00000018     open_interface.obj (.text:oi_parseInt)
-                  00006af6    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : strcmp.c.obj (.text:strcmp)
-                  00006b0e    00000016                                   : strchr.c.obj (.text:strchr)
-                  00006b24    00000014                                   : strcpy.c.obj (.text:strcpy)
-                  00006b38    00000014                                   : strlen.c.obj (.text:strlen)
-                  00006b4c    00000012                                   : wcslen.c.obj (.text:wcslen)
-                  00006b5e    00000010     driverlib.lib : interrupt.obj (.text:IntMasterEnable)
-                  00006b6e    00000010     lcd.obj (.text:lcd_clear)
-                  00006b7e    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  00006b8c    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
-                  00006b98    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
-                  00006ba4    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00006bb0    0000000a     rtsv7M4_T_le_v4SPD16_eabi.lib : sprintf.c.obj (.text:_outc)
-                  00006bba    00000002     --HOLE-- [fill = 0]
-                  00006bbc    00000008                                   : errno.c.obj (.text:__aeabi_errno_addr)
-                  00006bc4    00000008                                   : memory.c.obj (.text:malloc)
-                  00006bcc    00000004                                   : pre_init.c.obj (.text:_system_pre_init)
-                  00006bd0    00000004                                   : exit.c.obj (.text:abort:abort)
+                  00004618    00000220     scanner.obj (.text)
+                  00004838    000001ec     libcybotScan.lib : ping.obj (.text)
+                  00004a24    000001d0     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:_pconv_g)
+                  00004bf4    000001b6                                   : fd_add_t2.asm.obj (.text)
+                  00004daa    00000002                                   : div0.asm.obj (.text)
+                  00004dac    00000184     uart.obj (.text)
+                  00004f30    00000174     rtsv7M4_T_le_v4SPD16_eabi.lib : k_sin.c.obj (.text:__kernel_sin)
+                  000050a4    00000170                                   : k_cos.c.obj (.text:__kernel_cos)
+                  00005214    00000158     libcybotScan.lib : servo.obj (.text)
+                  0000536c    00000158     rtsv7M4_T_le_v4SPD16_eabi.lib : e_sqrt.c.obj (.text:sqrt)
+                  000054c4    0000013c                                   : _printfi.c.obj (.text:_pconv_e)
+                  00005600    00000136                                   : fd_div_t2.asm.obj (.text)
+                  00005736    00000002     --HOLE-- [fill = 0]
+                  00005738    00000124                                   : _printfi.c.obj (.text:fcvt)
+                  0000585c    00000118     libcybotScan.lib : ir.obj (.text)
+                  00005974    00000110     rtsv7M4_T_le_v4SPD16_eabi.lib : s_scalbn.c.obj (.text:scalbn)
+                  00005a84    00000100                                   : memory.c.obj (.text:aligned_alloc)
+                  00005b84    000000fc                                   : fd_mul_t2.asm.obj (.text)
+                  00005c80    000000f8                                   : s_floor.c.obj (.text:floor)
+                  00005d78    000000e4                                   : memory.c.obj (.text:free)
+                  00005e5c    000000b1                                   : _printfi.c.obj (.text:_ltostr)
+                  00005f0d    00000001     --HOLE-- [fill = 0]
+                  00005f0e    0000009c                                   : memcpy_t2.asm.obj (.text)
+                  00005faa    00000096                                   : ull_div_t2.asm.obj (.text)
+                  00006040    00000086                                   : fd_cmp_t2.asm.obj (.text:__aeabi_cdcmple)
+                  000060c6    00000086                                   : fd_cmp_t2.asm.obj (.text:__aeabi_cdrcmple)
+                  0000614c    0000007a                                   : memset_t2.asm.obj (.text)
+                  000061c6    00000002     --HOLE-- [fill = 0]
+                  000061c8    00000070                                   : memory.c.obj (.text:split)
+                  00006238    0000006e                                   : _printfi.c.obj (.text:_mcpy)
+                  000062a6    0000006e                                   : fd_tos_t2.asm.obj (.text)
+                  00006314    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  0000637c    00000064                                   : ti_fmax.c.obj (.text:fminf)
+                  000063e0    00000064                                   : s_frexp.c.obj (.text:frexp)
+                  00006444    0000005c                                   : ti_fmax.c.obj (.text:fmaxf)
+                  000064a0    00000056                                   : _printfi.c.obj (.text:_pconv_f)
+                  000064f6    00000054                                   : _ltoa.c.obj (.text:__TI_ltoa)
+                  0000654a    00000052                                   : _printfi.c.obj (.text:_ecpy)
+                  0000659c    0000004c                                   : atoi.c.obj (.text:atoi)
+                  000065e8    00000048                                   : fd_toi_t2.asm.obj (.text)
+                  00006630    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00006674    00000044                                   : fd_tou_t2.asm.obj (.text)
+                  000066b8    00000040                                   : sprintf.c.obj (.text:sprintf)
+                  000066f8    00000040                                   : vsnprintf.c.obj (.text:vsnprintf)
+                  00006738    0000003e                                   : _printfi.c.obj (.text:_fcpy)
+                  00006776    0000003e     main_pt4.obj (.text)
+                  000067b4    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.text:calloc)
+                  000067ec    00000038     init.obj (.text)
+                  00006824    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : fs_tod_t2.asm.obj (.text)
+                  0000685c    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  00006890    00000034     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  000068c4    00000030                                   : vsnprintf.c.obj (.text:_outs)
+                  000068f4    0000002e                                   : i_tofd_t2.asm.obj (.text)
+                  00006922    00000002     --HOLE-- [fill = 0]
+                  00006924    00000028                                   : memory.c.obj (.text:free_list_insert)
+                  0000694c    0000001c                                   : memory.c.obj (.text:free_list_remove)
+                  00006968    0000001c                                   : memccpy.c.obj (.text:memccpy)
+                  00006984    0000001a                                   : s_copysign.c.obj (.text:copysign)
+                  0000699e    00000018                                   : vsnprintf.c.obj (.text:_outc)
+                  000069b6    00000018                                   : sprintf.c.obj (.text:_outs)
+                  000069ce    00000018     open_interface.obj (.text:oi_parseInt)
+                  000069e6    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : strcmp.c.obj (.text:strcmp)
+                  000069fe    00000016                                   : strchr.c.obj (.text:strchr)
+                  00006a14    00000014                                   : strcpy.c.obj (.text:strcpy)
+                  00006a28    00000014                                   : strlen.c.obj (.text:strlen)
+                  00006a3c    00000012                                   : wcslen.c.obj (.text:wcslen)
+                  00006a4e    00000010     driverlib.lib : interrupt.obj (.text:IntMasterEnable)
+                  00006a5e    00000010     lcd.obj (.text:lcd_clear)
+                  00006a6e    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00006a7c    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
+                  00006a88    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  00006a94    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00006aa0    0000000a     rtsv7M4_T_le_v4SPD16_eabi.lib : sprintf.c.obj (.text:_outc)
+                  00006aaa    00000002     --HOLE-- [fill = 0]
+                  00006aac    00000008                                   : errno.c.obj (.text:__aeabi_errno_addr)
+                  00006ab4    00000008                                   : memory.c.obj (.text:malloc)
+                  00006abc    00000004                                   : pre_init.c.obj (.text:_system_pre_init)
+                  00006ac0    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.const     0    00006bd8    000002a3     
-                  00006bd8    00000158     rtsv7M4_T_le_v4SPD16_eabi.lib : k_rem_pio2.c.obj (.const:$O1$$)
-                  00006d30    00000101                                   : ctype.c.obj (.const:.string:_ctypes_)
-                  00006e31    00000004     lcd.obj (.const:.string:lineAddress$1)
-                  00006e35    00000003     --HOLE-- [fill = 0]
-                  00006e38    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : e_pow.c.obj (.const:$O1$$)
-                  00006e68    0000000f     open_interface.obj (.const:.string:$P$T0$3)
-                  00006e77    00000004     lcd.obj (.const:.string:lineAddresses$2)
+.const     0    00006ac8    000002a3     
+                  00006ac8    00000158     rtsv7M4_T_le_v4SPD16_eabi.lib : k_rem_pio2.c.obj (.const:$O1$$)
+                  00006c20    00000101                                   : ctype.c.obj (.const:.string:_ctypes_)
+                  00006d21    00000004     lcd.obj (.const:.string:lineAddress$1)
+                  00006d25    00000003     --HOLE-- [fill = 0]
+                  00006d28    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : e_pow.c.obj (.const:$O1$$)
+                  00006d58    0000000f     open_interface.obj (.const:.string:$P$T0$3)
+                  00006d67    00000004     lcd.obj (.const:.string:lineAddresses$2)
 
-.cinit     0    00006e80    00000058     
-                  00006e80    00000022     (.cinit..data.load) [load image, compression = lzss]
-                  00006ea2    00000002     --HOLE-- [fill = 0]
-                  00006ea4    0000000c     (__TI_handler_table)
-                  00006eb0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00006eb8    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
-                  00006ec0    00000018     (__TI_cinit_table)
+.cinit     0    00006d70    00000058     
+                  00006d70    00000022     (.cinit..data.load) [load image, compression = lzss]
+                  00006d92    00000002     --HOLE-- [fill = 0]
+                  00006d94    0000000c     (__TI_handler_table)
+                  00006da0    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00006da8    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00006db0    00000018     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -214,12 +213,11 @@ MODULE SUMMARY
        movement.obj                   644     0         0      
        tm4c123gh6pm_startup_ccs.obj   12      620       0      
        Timer.obj                      584     0         5      
-       scanner.obj                    540     0         12     
+       scanner.obj                    544     0         12     
        uart.obj                       388     0         5      
-       adc.obj                        272     0         0      
-       init.obj                       60      0         0      
+       init.obj                       56      0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         8966    643       1538   
+       Total:                         8694    643       1538   
                                                                
     ../libcybotScan.lib
        cyBot_Scan.obj                 608     0         4      
@@ -289,20 +287,20 @@ MODULE SUMMARY
        Stack:                         0       0         2048   
        Linker Generated:              0       86        0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   26975   1378      5271   
+       Grand Total:                   26703   1378      5271   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00006ec0 records: 3, size/record: 8, table size: 24
-	.data: load addr=00006e80, load size=00000022 bytes, run addr=20001418, run size=00000085 bytes, compression=lzss
-	.bss: load addr=00006eb0, load size=00000008 bytes, run addr=20000a70, run size=000005a6 bytes, compression=zero_init
-	.vtable: load addr=00006eb8, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+__TI_cinit_table @ 00006db0 records: 3, size/record: 8, table size: 24
+	.data: load addr=00006d70, load size=00000022 bytes, run addr=20001418, run size=00000085 bytes, compression=lzss
+	.bss: load addr=00006da0, load size=00000008 bytes, run addr=20000a70, run size=000005a6 bytes, compression=zero_init
+	.vtable: load addr=00006da8, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00006ea4 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00006d94 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_lzss
 	index: 2, handler: __TI_decompress_none
@@ -312,92 +310,90 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                          
 -------   ----                          
-000058f1  ADC0SS0_Handler               
-00006bd1  C$$EXIT                       
-00006b8d  CPUcpsie                      
+000058f5  ADC0SS0_Handler               
+00006ac1  C$$EXIT                       
+00006a7d  CPUcpsie                      
 00000bc3  GPIOF_Handler                 
-00006b5f  IntMasterEnable               
-0000696d  IntRegister                   
-00006ba5  ResetISR                      
-00004925  TIMER3B_Handler               
-00004eb3  UART1_Handler                 
+00006a4f  IntMasterEnable               
+0000685d  IntRegister                   
+00006a95  ResetISR                      
+00004929  TIMER3B_Handler               
+00004eb7  UART1_Handler                 
 20000a70  __STACK_END                   
 00000800  __STACK_SIZE                  
 20000470  __STACK_TOP                   
 00000400  __SYSMEM_SIZE                 
-00006ec0  __TI_CINIT_Base               
-00006ed8  __TI_CINIT_Limit              
-00006ea4  __TI_Handler_Table_Base       
-00006eb0  __TI_Handler_Table_Limit      
-0000673d  __TI_auto_init_nobinit_nopinit
-00006421  __TI_decompress_lzss          
-00006b7f  __TI_decompress_none          
-00006603  __TI_ltoa                     
+00006db0  __TI_CINIT_Base               
+00006dc8  __TI_CINIT_Limit              
+00006d94  __TI_Handler_Table_Base       
+00006da0  __TI_Handler_Table_Limit      
+00006631  __TI_auto_init_nobinit_nopinit
+00006315  __TI_decompress_lzss          
+00006a6f  __TI_decompress_none          
+000064f7  __TI_ltoa                     
 ffffffff  __TI_pprof_out_hndl           
 00000e8d  __TI_printfi                  
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-00006b99  __TI_zero_init                
-0000614d  __aeabi_cdcmpeq               
-0000614d  __aeabi_cdcmple               
-000061d3  __aeabi_cdrcmple              
-000063b3  __aeabi_d2f                   
-000066f5  __aeabi_d2iz                  
-00006781  __aeabi_d2uiz                 
-00004bfb  __aeabi_dadd                  
-000055fd  __aeabi_ddiv                  
-00005c91  __aeabi_dmul                  
-00004bf1  __aeabi_dsub                  
-00006bbd  __aeabi_errno_addr            
-00006935  __aeabi_f2d                   
-00006a05  __aeabi_i2d                   
-00004da7  __aeabi_idiv0                 
-00004da7  __aeabi_ldiv0                 
-00006259  __aeabi_memclr                
-00006259  __aeabi_memclr4               
-00006259  __aeabi_memclr8               
-0000601b  __aeabi_memcpy                
-0000601b  __aeabi_memcpy4               
-0000601b  __aeabi_memcpy8               
-0000625b  __aeabi_memset                
-0000625b  __aeabi_memset4               
-0000625b  __aeabi_memset8               
-000060b7  __aeabi_uldivmod              
+00006a89  __TI_zero_init                
+00006041  __aeabi_cdcmpeq               
+00006041  __aeabi_cdcmple               
+000060c7  __aeabi_cdrcmple              
+000062a7  __aeabi_d2f                   
+000065e9  __aeabi_d2iz                  
+00006675  __aeabi_d2uiz                 
+00004bff  __aeabi_dadd                  
+00005601  __aeabi_ddiv                  
+00005b85  __aeabi_dmul                  
+00004bf5  __aeabi_dsub                  
+00006aad  __aeabi_errno_addr            
+00006825  __aeabi_f2d                   
+000068f5  __aeabi_i2d                   
+00004dab  __aeabi_idiv0                 
+00004dab  __aeabi_ldiv0                 
+0000614d  __aeabi_memclr                
+0000614d  __aeabi_memclr4               
+0000614d  __aeabi_memclr8               
+00005f0f  __aeabi_memcpy                
+00005f0f  __aeabi_memcpy4               
+00005f0f  __aeabi_memcpy8               
+0000614f  __aeabi_memset                
+0000614f  __aeabi_memset4               
+0000614f  __aeabi_memset8               
+00005fab  __aeabi_uldivmod              
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
-000050a1  __kernel_cos                  
+000050a5  __kernel_cos                  
 000022ad  __kernel_rem_pio2             
-00004f2d  __kernel_sin                  
+00004f31  __kernel_sin                  
 UNDEFED   __mpu_init                    
 20000270  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
-000069a1  _c_int00_noargs               
-00006d30  _ctypes_                      
+00006891  _c_int00_noargs               
+00006c20  _ctypes_                      
 2000147c  _lock                         
 000018db  _nop                          
 2000149c  _running                      
 20001018  _sys_memory                   
 UNDEFED   _system_post_cinit            
-00006bcd  _system_pre_init              
+00006abd  _system_pre_init              
 20000eb4  _timeout_ticks                
 20001480  _unlock                       
-00006bd1  abort                         
-00005971  adc_init                      
-000059ef  adc_read                      
-00005b91  aligned_alloc                 
-000066a9  atoi                          
+00006ac1  abort                         
+00005a85  aligned_alloc                 
+0000659d  atoi                          
 000036fd  autonomous                    
 20001478  avg                           
 ffffffff  binit                         
 00003c7d  bumped                        
 20001014  c                             
-000068fd  calloc                        
+000067b5  calloc                        
 2000145c  clicked                       
 20001464  clockwise                     
-00006a95  copysign                      
-00006a95  copysignl                     
+00006985  copysign                      
+00006985  copysignl                     
 00003e6d  correction                    
 000029e5  cos                           
 000029e5  cosl                          
@@ -415,28 +411,28 @@ ffffffff  binit
 20000ffc  fallingEdge                   
 0000334b  find_smallest                 
 20001498  flag                          
-00005d8d  floor                         
-00005d8d  floorl                        
-00006551  fmaxf                         
-00006489  fminf                         
-00005e85  free                          
-000064ed  frexp                         
-000064ed  frexpl                        
+00005c81  floor                         
+00005c81  floorl                        
+00006445  fmaxf                         
+0000637d  fminf                         
+00005d79  free                          
+000063e1  frexp                         
+000063e1  frexpl                        
 20000000  g_pfnRAMVectors               
 00000000  g_pfnVectors                  
 0000097f  go_charge                     
 20001470  i                             
 20000eb8  impp                          
-000068c1  init                          
+000067ed  init                          
 20000d48  ir                            
-00005907  ir_enableInterrupt            
-000058e9  ir_getDistance                
-000058c1  ir_getValue                   
-00005859  ir_init                       
+0000590b  ir_enableInterrupt            
+000058ed  ir_getDistance                
+000058c5  ir_getValue                   
+0000585d  ir_init                       
 20001015  isRisingEdge                  
 20001000  isr_int_value                 
 20001428  itself                        
-00006b6f  lcd_clear                     
+00006a5f  lcd_clear                     
 000035a9  lcd_gotoLine                  
 00003411  lcd_init                      
 0000360f  lcd_printf                    
@@ -446,17 +442,17 @@ ffffffff  binit
 00003527  lcd_sendCommand               
 00003565  lcd_sendNibble                
 000035d1  lcd_setCursorPos              
-00005a81  ldexp                         
-00005a81  ldexpl                        
+00005975  ldexp                         
+00005975  ldexpl                        
 20001434  left                          
 20001004  left_calibration_value        
-00006883  main                          
-00006bc5  malloc                        
+00006777  main                          
+00006ab5  malloc                        
 00003805  manual_drive                  
-00005b91  memalign                      
-00006a79  memccpy                       
-0000601b  memcpy                        
-00006261  memset                        
+00005a85  memalign                      
+00006969  memccpy                       
+00005f0f  memcpy                        
+00006155  memset                        
 2000143c  motor_cal_factor_L            
 20001440  motor_cal_factor_R            
 00003d83  move_backward                 
@@ -471,7 +467,7 @@ ffffffff  binit
 000002b1  oi_init                       
 00000289  oi_init_noupdate              
 00000915  oi_loadSong                   
-00006adf  oi_parseInt                   
+000069cf  oi_parseInt                   
 0000032b  oi_parsePacket                
 0000096b  oi_play_song                  
 0000084b  oi_setLeds                    
@@ -486,9 +482,9 @@ ffffffff  binit
 000002d9  oi_update                     
 2000142c  one                           
 000039d5  outlier_removal               
-00004977  ping_getDistance              
-00004835  ping_init                     
-000048bb  ping_trigger                  
+0000497b  ping_getDistance              
+00004839  ping_init                     
+000048bf  ping_trigger                  
 000033a7  point_to_smallest_obj         
 000018dd  pow                           
 000018dd  powl                          
@@ -499,27 +495,27 @@ ffffffff  binit
 20001438  right                         
 2000100c  right_calibration_value       
 20001010  risingEdge                    
-00005a81  scalbn                        
-00005a81  scalbnl                       
+00005975  scalbn                        
+00005975  scalbnl                       
 20000ff4  scan                          
 000038e1  scan_360                      
 0000473f  scan_IR                       
 00004619  scan_IR_PING                  
 000046ff  scan_PING                     
-00005211  servo_init                    
-000052a1  servo_move                    
-00005301  servo_setPWM                  
-00005295  servo_stop                    
+00005215  servo_init                    
+000052a5  servo_move                    
+00005305  servo_setPWM                  
+00005299  servo_stop                    
 20001490  small                         
 20001468  small2                        
-000067c5  sprintf                       
-00005369  sqrt                          
-00005369  sqrtl                         
+000066b9  sprintf                       
+0000536d  sqrt                          
+0000536d  sqrtl                         
 2000146c  store_small_obect             
-00006b0f  strchr                        
-00006af7  strcmp                        
-00006b25  strcpy                        
-00006b39  strlen                        
+000069ff  strchr                        
+000069e7  strcmp                        
+00006a15  strcpy                        
+00006a29  strlen                        
 20001474  sum                           
 000044ef  timer_getMicros               
 00004497  timer_getMillis               
@@ -531,12 +527,12 @@ ffffffff  binit
 0000457b  timer_waitMillis              
 00003deb  turn                          
 20001430  two                           
-00004da9  uart_init                     
-00004e73  uart_interrupt                
-00004e4d  uart_receive                  
-00004e31  uart_sendChar                 
-00006805  vsnprintf                     
-00006b4d  wcslen                        
+00004dad  uart_init                     
+00004e77  uart_interrupt                
+00004e51  uart_receive                  
+00004e35  uart_sendChar                 
+000066f9  vsnprintf                     
+00006a3d  wcslen                        
 20001424  window                        
 20001418  x                             
 2000141c  y                             
@@ -622,105 +618,103 @@ address   name
 00004619  scan_IR_PING                  
 000046ff  scan_PING                     
 0000473f  scan_IR                       
-00004835  ping_init                     
-000048bb  ping_trigger                  
-00004925  TIMER3B_Handler               
-00004977  ping_getDistance              
-00004bf1  __aeabi_dsub                  
-00004bfb  __aeabi_dadd                  
-00004da7  __aeabi_idiv0                 
-00004da7  __aeabi_ldiv0                 
-00004da9  uart_init                     
-00004e31  uart_sendChar                 
-00004e4d  uart_receive                  
-00004e73  uart_interrupt                
-00004eb3  UART1_Handler                 
-00004f2d  __kernel_sin                  
-000050a1  __kernel_cos                  
-00005211  servo_init                    
-00005295  servo_stop                    
-000052a1  servo_move                    
-00005301  servo_setPWM                  
-00005369  sqrt                          
-00005369  sqrtl                         
-000055fd  __aeabi_ddiv                  
-00005859  ir_init                       
-000058c1  ir_getValue                   
-000058e9  ir_getDistance                
-000058f1  ADC0SS0_Handler               
-00005907  ir_enableInterrupt            
-00005971  adc_init                      
-000059ef  adc_read                      
-00005a81  ldexp                         
-00005a81  ldexpl                        
-00005a81  scalbn                        
-00005a81  scalbnl                       
-00005b91  aligned_alloc                 
-00005b91  memalign                      
-00005c91  __aeabi_dmul                  
-00005d8d  floor                         
-00005d8d  floorl                        
-00005e85  free                          
-0000601b  __aeabi_memcpy                
-0000601b  __aeabi_memcpy4               
-0000601b  __aeabi_memcpy8               
-0000601b  memcpy                        
-000060b7  __aeabi_uldivmod              
-0000614d  __aeabi_cdcmpeq               
-0000614d  __aeabi_cdcmple               
-000061d3  __aeabi_cdrcmple              
-00006259  __aeabi_memclr                
-00006259  __aeabi_memclr4               
-00006259  __aeabi_memclr8               
-0000625b  __aeabi_memset                
-0000625b  __aeabi_memset4               
-0000625b  __aeabi_memset8               
-00006261  memset                        
-000063b3  __aeabi_d2f                   
-00006421  __TI_decompress_lzss          
-00006489  fminf                         
-000064ed  frexp                         
-000064ed  frexpl                        
-00006551  fmaxf                         
-00006603  __TI_ltoa                     
-000066a9  atoi                          
-000066f5  __aeabi_d2iz                  
-0000673d  __TI_auto_init_nobinit_nopinit
-00006781  __aeabi_d2uiz                 
-000067c5  sprintf                       
-00006805  vsnprintf                     
-00006883  main                          
-000068c1  init                          
-000068fd  calloc                        
-00006935  __aeabi_f2d                   
-0000696d  IntRegister                   
-000069a1  _c_int00_noargs               
-00006a05  __aeabi_i2d                   
-00006a79  memccpy                       
-00006a95  copysign                      
-00006a95  copysignl                     
-00006adf  oi_parseInt                   
-00006af7  strcmp                        
-00006b0f  strchr                        
-00006b25  strcpy                        
-00006b39  strlen                        
-00006b4d  wcslen                        
-00006b5f  IntMasterEnable               
-00006b6f  lcd_clear                     
-00006b7f  __TI_decompress_none          
-00006b8d  CPUcpsie                      
-00006b99  __TI_zero_init                
-00006ba5  ResetISR                      
-00006bbd  __aeabi_errno_addr            
-00006bc5  malloc                        
-00006bcd  _system_pre_init              
-00006bd1  C$$EXIT                       
-00006bd1  abort                         
-00006d30  _ctypes_                      
-00006ea4  __TI_Handler_Table_Base       
-00006eb0  __TI_Handler_Table_Limit      
-00006ec0  __TI_CINIT_Base               
-00006ed8  __TI_CINIT_Limit              
+00004839  ping_init                     
+000048bf  ping_trigger                  
+00004929  TIMER3B_Handler               
+0000497b  ping_getDistance              
+00004bf5  __aeabi_dsub                  
+00004bff  __aeabi_dadd                  
+00004dab  __aeabi_idiv0                 
+00004dab  __aeabi_ldiv0                 
+00004dad  uart_init                     
+00004e35  uart_sendChar                 
+00004e51  uart_receive                  
+00004e77  uart_interrupt                
+00004eb7  UART1_Handler                 
+00004f31  __kernel_sin                  
+000050a5  __kernel_cos                  
+00005215  servo_init                    
+00005299  servo_stop                    
+000052a5  servo_move                    
+00005305  servo_setPWM                  
+0000536d  sqrt                          
+0000536d  sqrtl                         
+00005601  __aeabi_ddiv                  
+0000585d  ir_init                       
+000058c5  ir_getValue                   
+000058ed  ir_getDistance                
+000058f5  ADC0SS0_Handler               
+0000590b  ir_enableInterrupt            
+00005975  ldexp                         
+00005975  ldexpl                        
+00005975  scalbn                        
+00005975  scalbnl                       
+00005a85  aligned_alloc                 
+00005a85  memalign                      
+00005b85  __aeabi_dmul                  
+00005c81  floor                         
+00005c81  floorl                        
+00005d79  free                          
+00005f0f  __aeabi_memcpy                
+00005f0f  __aeabi_memcpy4               
+00005f0f  __aeabi_memcpy8               
+00005f0f  memcpy                        
+00005fab  __aeabi_uldivmod              
+00006041  __aeabi_cdcmpeq               
+00006041  __aeabi_cdcmple               
+000060c7  __aeabi_cdrcmple              
+0000614d  __aeabi_memclr                
+0000614d  __aeabi_memclr4               
+0000614d  __aeabi_memclr8               
+0000614f  __aeabi_memset                
+0000614f  __aeabi_memset4               
+0000614f  __aeabi_memset8               
+00006155  memset                        
+000062a7  __aeabi_d2f                   
+00006315  __TI_decompress_lzss          
+0000637d  fminf                         
+000063e1  frexp                         
+000063e1  frexpl                        
+00006445  fmaxf                         
+000064f7  __TI_ltoa                     
+0000659d  atoi                          
+000065e9  __aeabi_d2iz                  
+00006631  __TI_auto_init_nobinit_nopinit
+00006675  __aeabi_d2uiz                 
+000066b9  sprintf                       
+000066f9  vsnprintf                     
+00006777  main                          
+000067b5  calloc                        
+000067ed  init                          
+00006825  __aeabi_f2d                   
+0000685d  IntRegister                   
+00006891  _c_int00_noargs               
+000068f5  __aeabi_i2d                   
+00006969  memccpy                       
+00006985  copysign                      
+00006985  copysignl                     
+000069cf  oi_parseInt                   
+000069e7  strcmp                        
+000069ff  strchr                        
+00006a15  strcpy                        
+00006a29  strlen                        
+00006a3d  wcslen                        
+00006a4f  IntMasterEnable               
+00006a5f  lcd_clear                     
+00006a6f  __TI_decompress_none          
+00006a7d  CPUcpsie                      
+00006a89  __TI_zero_init                
+00006a95  ResetISR                      
+00006aad  __aeabi_errno_addr            
+00006ab5  malloc                        
+00006abd  _system_pre_init              
+00006ac1  C$$EXIT                       
+00006ac1  abort                         
+00006c20  _ctypes_                      
+00006d94  __TI_Handler_Table_Base       
+00006da0  __TI_Handler_Table_Limit      
+00006db0  __TI_CINIT_Base               
+00006dc8  __TI_CINIT_Limit              
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
 20000000  g_pfnRAMVectors               
@@ -777,4 +771,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                    
 UNDEFED   _system_post_cinit            
 
-[229 symbols]
+[227 symbols]
