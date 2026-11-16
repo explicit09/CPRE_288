@@ -1,69 +1,63 @@
-#include "cyBot_Scan.h"
-#include "cyBot_uart.h"
 #include "Timer.h"
 #include "lcd.h"
-#include "string.h"
-
-// 227500 - right cal
-// 1282750 - left cal
-// for cyBOT 22
+#include "servo.h"
+#include "button.h"
 
 int main(void)
 {
-    timer_init();
+    //1
     lcd_init();
-    cyBOT_init_Scan(0b0111);
-//    cyBOT_SERVO_cal();
-    cyBot_uart_init();
-    right_calibration_value = 227500;
-    left_calibration_value = 1282750;
+    servo_init(); //going to 90 degres
 
-    int i;
-    int j;
-    int k;
-    int z;
-    int letter;
-    char message[50];
-    double dist[91];
-    char *header;
-    cyBOT_Scan_t scan;
+    lcd_printf("Moving to 0");
+    servo_set_match(304000); 
+    lcd_printf("At 0: 304000");
 
-    for (i = 0; i <= 180; i += 2)
-    {
-        cyBOT_Scan(i, &scan);
-        dist[i / 2] = scan.sound_dist;
-    }
+    while (1) {}
+
+
+    //2
+    float angle = 90;
+    int direction = 1; //if 1= go clockwise, -1 = anticlockwise
+
+    lcd_init();
+    button_init();
+    servo_init();
+    servo_move(angle);
+    lcd_printf("match: %d\n", servo_get_match());
 
     while (1)
-       {
-    letter = cyBot_getByte();
+    {
+        int button = button_getButton();
 
-    header = "Degrees\t\tDistance (cm)";
-
-//    while (1)
-//    {
-        if (letter == 'm')
+        if (button == 1) angle += direction * 1;
+        else if (button == 2)     angle += direction * 5;
+        else if (button == 3) direction = -direction;
+        else if (button == 4) 
         {
-            cyBot_sendByte('\r');
-            cyBot_sendByte('\n');
-            for (z = 0; z < strlen(header); z++)
-            {
-                cyBot_sendByte(header[z]);
+            if (direction == 1) {
+                angle = 180;
             }
-//
-            for (j = 0; j < 91; j++)
-            {
-                sprintf(message, "%d\t\t%.1f", j * 2, dist[j]);
-                cyBot_sendByte('\r');
-                cyBot_sendByte('\n');
-                for (k = 0; k < strlen(message); k++)
-                {
-
-                    cyBot_sendByte(message[k]);
-                }
+            else if{
+                angle = 0;
             }
         }
-    }
 
-    return 0;
+        if (angle > 180)    angle = 180;
+        if (angle < 0) angle = 0;
+
+        if (button != 0)
+        {
+            servo_move(angle);
+
+            
+            if (direction == 1)
+                lcd_printf("match: %d\ntoward higher",    servo_get_match());
+            else
+                lcd_printf("match: %d\ntoward lower", servo_get_match());
+
+
+            timer_waitMillis(200);  
+        }
+    }
 }
