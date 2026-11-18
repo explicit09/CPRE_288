@@ -75,7 +75,7 @@ def send_quit():
 def send_scan():
         global gui_send_message # Command that the GUI has requested sent to the Cybot
         
-        gui_send_message = "h"   # Update the message for the Client to send -----------------changed to h
+        gui_send_message = "h\n"   # Update the message for the Client to send -----------------changed to h
 
         
 #---------------------------------------------------------------------define the other letter-----------
@@ -83,7 +83,7 @@ def send_scan():
 def send_move():
         global gui_send_message # Command that the GUI has requested sent to the Cybot
         
-        gui_send_message = "H"   # Update the message for the Client to send 
+        gui_send_message = "H\n"   # Update the message for the Client to send 
 
 
 #---------------------------------------------------------------------define the other letter-----------
@@ -91,7 +91,7 @@ def send_move():
 def send_scan360():
         global gui_send_message # Command that the GUI has requested sent to the Cybot
         
-        gui_send_message = "o"   # Update the message for the Client to send 
+        gui_send_message = "o\n"   # Update the message for the Client to send 
 
 
 
